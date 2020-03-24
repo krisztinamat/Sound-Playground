@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+
+    <head>
+        <title> Sound Playground: Elementary Edition</title>
+        <style>
+           h1{
+               font-size: 36px;
+           }
+           h2{
+               font-size: 24px;
+           } 
+            
+
+        </style>
+
+    </head>
+    <body>
+        <div class="header">
+            
+
+            <div class="navbar">
+                <a href="playground_elementary.html">Home</a>
+                <div class="dropdown">
+                  <button class="dropbtn">Practice! 
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="pitch_direction.html">Basic Ear Trainer</a>
+                    <!--<a href="rhythm_grid1.html">Rhythm Grid</a>-->
+                  </div>
+                </div> 
+                <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>
+              </div>
+
+              <h1>
+                &#9835 Sound Playground: Elementary Edition &#9835
+             
+         </h1>
+
+            <h2>
+              Welcome to the Basic Ear Trainer page! 
+            </h2>
+        </div>
+
+        &#9834 Step 1: Click the "Listen" button. You will hear two notes.
+        <br>
+        &#9834 Step 2: Decide whether the music got higher (went up), got lower (went down), or stayed the same.
+        <br>
+        &#9834 Step 3: Click the answer that matches your choice and press the "Submit" button.
+        <br>
+        &#9834 Step 4: Read your result and keep practicing!
+
+        <br><br>
+
+        <button id = "listen">Listen</button>
+
+        <select id="answerChoice">
+          <option value="up">Music got higher (went up)</option>
+          <option value="down">Music got lower (went down)</option>
+          <option value="unison">Music stayed the same</option>
+        </select>
+
+        
+        <button id = "submit">Submit</button>
+        <br><br>
+
+        <div id="result" style = "visibility:hidden"></div>
+        <br>
+        <button id = "new" style = "visibility:hidden">Create new exercise!</button>
+
+        
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.12/Tone.js'></script>
+        <script text="text/javascript" src="soundElem.js"></script>
+     
+
+
+
+    </body>
+
+</html>
