@@ -1,0 +1,209 @@
+html *
+{
+   color: rgb(2, 15, 44);
+   font-family: Tw Cen MT;
+   font-size: 24px;
+
+   
+}
+
+
+.navbar {
+  overflow: hidden;
+  background-color:  rgb(2, 15, 44);
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color:rgb(187, 186, 250);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+        
+
+.menu
+{
+    width: 150px;
+    box-shadow: 3px 3px 5px #888888;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: fixed;
+    display: none;
+    background-color: white;
+}
+
+.sharp{height: 20px;}
+.sharp:hover{background-color: rgb(187, 186, 250);
+    cursor: pointer;}
+.flat{height: 20px;}
+.flat:hover{background-color: rgb(187, 186, 250);
+    cursor: pointer;}
+.dbsharp{height: 20px;}
+.dbsharp:hover{background-color: rgb(187, 186, 250);
+    cursor: pointer;}
+.dbflat{height: 20px;}
+.dbflat:hover{background-color: rgb(187, 186, 250);
+    cursor: pointer;}
+.natural{height: 20px;}
+.natural:hover{background-color: rgb(187, 186, 250);
+    cursor: pointer;}
+.undo{height: 20px;}
+.undo:hover{background-color: rgb(187, 186, 250);
+    cursor: pointer;}
+
+.topcorner{
+position: absolute;
+top:10px;
+right: 10px;
+}
+.reset{
+position: absolute;
+top:10px;
+right: 10px;
+}
+
+#exercise {
+display: inline-block;
+padding: 10px 15px;
+font-size: 15px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: #fff;
+background-color:rgb(187, 186, 250);
+border: none;
+border-radius: 15px;
+box-shadow: 0 9px #999;
+}
+
+#exercise:hover {background-color:rgb(187, 120, 250)}
+
+#exercise:active {
+background-color: rgb(187, 120, 250);
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
+
+
+#submit {
+display: inline-block;
+padding: 10px 15px;
+font-size: 15px;
+cursor: pointer;
+text-align: center;
+text-decoration: none;
+outline: none;
+color: #fff;
+background-color:rgb(187, 186, 250);
+border: none;
+border-radius: 15px;
+box-shadow: 0 9px #999;
+}
+
+#submit:hover {background-color:rgb(187, 120, 250)}
+
+#submit:active {
+background-color: rgb(187, 120, 250);
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
+
+#tonality {
+background-color: white; 
+color: black; 
+border: 2px solid  rgb(187, 186, 250);
+}
+
+#tonality:hover{
+background-color: rgb(187, 186, 250);
+color: white;
+}
+
+#listen {
+background-color: white; 
+color: black; 
+border: 2px solid  rgb(187, 186, 250);
+}
+
+#listen:hover{
+background-color: rgb(187, 186, 250);
+color: white;
+}
+
+#new {
+background-color: white; 
+color: black; 
+border: 2px solid  rgb(187, 186, 250);
+}
+
+#new:hover{
+background-color: rgb(187, 186, 250);
+color: white;
+}
+
+#rst {
+background-color: white; 
+color: black; 
+border: 2px solid  rgb(187, 186, 250);
+}
+
+#rst:hover{
+background-color: rgb(187, 186, 250);
+color: white;
+}
