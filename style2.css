@@ -6,6 +6,9 @@ html *
 
    
 }
+.answerChoice.dropdown:hover{
+  background-color: rgb(187, 186, 250)
+}
 
 
 .navbar {
@@ -164,6 +167,29 @@ box-shadow: 0 5px #666;
 transform: translateY(4px);
 }
 
+#submit2 {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color:rgb(187, 186, 250);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  }
+  
+  #submit2:hover {background-color:rgb(187, 120, 250)}
+  
+  #submit2:active {
+  background-color: rgb(187, 120, 250);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  }
+
 #tonality {
 background-color: white; 
 color: black; 
@@ -185,6 +211,17 @@ border: 2px solid  rgb(187, 186, 250);
 background-color: rgb(187, 186, 250);
 color: white;
 }
+
+#listen2 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid  rgb(187, 186, 250);
+  }
+  
+  #listen2:hover{
+  background-color: rgb(187, 186, 250);
+  color: white;
+  }
 
 #new {
 background-color: white; 
