@@ -22,13 +22,15 @@ var answerBank = new Map();
 var eighths = VF.Beam(eighthPair); */
 
 //rhythmBank.set("eighth pair", [eighths, 1]);
-rhythmBank.set("eighth pair", [new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" }), 1] );
+rhythmBank.set("eighth pair", ["8", 1] );
+rhythmBank.set("single eighth note",["8", 0.5] );
+rhythmBank.set("dotted quarter note", ["q", 1.5]);
 rhythmBank.set("quarter note", ["q", 1]);
 rhythmBank.set("half note", ["h", 2]);
 rhythmBank.set("dotted half note", ["h", 3]);
 rhythmBank.set("whole note", ["w", 4]);
 
-var rhythmArr = ["quarter note", "half note", "whole note", "dotted half note"];
+var rhythmArr = ["quarter note", "half note", "whole note", "dotted half note", "eighth pair", "dotted quarter note", "single eighth note"];
 
 var currentMeasure = [1, 4]; //first item is measure number, and second is remaining beats;
 
@@ -40,20 +42,86 @@ while(currentMeasure[1] > 0 ){
     var beatsLeft = currentMeasure[1];
     var randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
     console.log(randomElement);
+
     var currentArr = rhythmBank.get(randomElement);
     var beatValue = currentArr[1];
-    console.log("beat value: " + beatValue); 
 
-    if(beatValue > beatsLeft){ continue; }
+
+    if(beatValue > beatsLeft){ 
+    continue; 
+    }
+
 
     else{
         currentMeasure[1] = beatsLeft - beatValue;
+
+        console.log("beats left " + currentMeasure[1]);
         
         var duration = currentArr[0];
+
         if(randomElement === "dotted half note"){
             notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
         }
-        else{notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));}
+
+        else if(randomElement === "dotted quarter note" ){
+          
+          if((currentMeasure[1] - Math.floor(currentMeasure[1])) !== 0){
+            
+            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
+            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" }) );
+            currentMeasure[1] = currentMeasure[1] - 0.5;
+          }
+          else{
+            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
+          }
+        }
+
+
+        else if(randomElement === "single eighth note"){
+
+          if(currentMeasure[1] == 0.5){
+            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+            currentMeasure[1] = 0;
+
+            if(currentMeasure[1] == 0 && currentMeasure[0] < 2){
+              notes.push(new VF.BarNote());
+              currentMeasure[0] = 2;
+              currentMeasure[1] = 4;
+              continue;
+              }
+           
+
+          }
+          if((currentMeasure[1] - Math.floor(currentMeasure[1])) !== 0){
+
+            var randomOutcome = [1, 2];
+            var random2 = randomOutcome[Math.floor(Math.random() * randomOutcome.length)];
+            if(random2 == 1){
+              notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+              notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }).addDot(0));
+              currentMeasure[1] = currentMeasure[1] - 1.5;
+            }
+            else{
+              notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+              notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }));
+              notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+              currentMeasure[1] = currentMeasure[1] - 1.5;
+            }
+          }
+          
+        }
+        
+        else if(randomElement === "eighth pair"){
+          
+          notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+          notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+       
+        }
+        else
+        {
+          notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+        }
         
     }
 
@@ -65,18 +133,21 @@ while(currentMeasure[1] > 0 ){
     }
     
 } 
-//currentMeasure[1] = 4;
-
 
 var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
 voice.setStrict(false);
 voice.addTickables(notes);
 
+VF.Formatter.FormatAndDraw(context, stave, notes);
+//beams.forEach(function(b) {b.setContext(context).draw()});
+
+
+
 // Format and justify the notes to 400 pixels.
-var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+//var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
 
 // Render voice
-voice.draw(context, stave); 
+//voice.draw(context, stave); */ //STOP HERE
    /* var beams = VF.Beam.generateBeams(notes);
     Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
     beams.forEach(function(b) {b.setContext(context).draw()}); */
@@ -98,11 +169,20 @@ voice.draw(context, stave);
           var tr = document.createElement('TR');
           tableBody.appendChild(tr);
       
-          for (var j = 0; j < 8; j++) {
+          for (var j = 0; j < 16; j++) {
             var td = document.createElement('TD');
             td.width = '75';
             if(i == 0 ){
-            td.appendChild(document.createTextNode(j%4+1));
+            if(j%2 == 0){
+              if(j == 0 || j == 8){td.appendChild(document.createTextNode("1"));}
+              if(j == 2 || j == 10){td.appendChild(document.createTextNode("2"));}
+              if(j == 4 || j == 12){td.appendChild(document.createTextNode("3"));}
+              if(j == 6 || j == 14){td.appendChild(document.createTextNode("4"));}
+            }
+            else{
+              td.appendChild(document.createTextNode("+"));
+            }
+            
             }
             else{
                 td.appendChild(document.createTextNode('\xa0'));

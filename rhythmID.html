@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+
+    <head>
+        <title> Sound Playground: Elementary Edition</title>
+        <style>
+           h1{
+               font-size: 36px;
+           }
+           h2{
+               font-size: 24px;
+           } 
+            
+
+        </style>
+
+    </head>
+    <body>
+        <div class="header">
+            
+
+            <div class="navbar">
+                <a href="playground_elementary.html">Home</a>
+                <div class="dropdown">
+                  <button class="dropbtn">Practice! 
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="pitch_direction.html">Pitch Direction Trainer</a>
+                    <a href="basicIntervals.html">Interval Drills</a>
+                    <!--<a href="rhythm_grid1.html">Rhythm Grid</a>-->
+                  </div>
+                </div> 
+                <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>
+                <a href="aboutpage.html">About</a>
+              </div>
+
+              <h1>
+                &#9835 Sound Playground: Elementary Edition &#9835
+             
+         </h1>
+
+            <h2>
+              Welcome to the Rhythm Identification page! 
+            </h2>
+        </div>
+       
+        &#9834 Step 1: You will be shown a random rhythm.
+        <br>
+        &#9834 Step 2: Select the correct name and beat value (assume 4/4 time), then press "Submit".
+        <br>
+        &#9834 Step 3: Check your result and keep practicing!
+        
+
+        <br><br>
+
+        <div id = "generatedExercise"> </div>
+
+        <select id="answerChoice">
+            <option value="whole note">whole note</option>
+            <option value="dotted half note">dotted half note</option>
+            <option value="half note">half note</option>
+            <option value="dotted quarter note">dotted quarter note</option>
+            <option value="quarter note">quarter note</option>
+            <option value="eighth note pair">eighth note pair</option>
+            <option value="four sixteenth notes">four sixteenth notes</option>
+            <option value="dotted eighth note">dotted eighth note</option>
+            <option value="eighth note">eighth note</option>
+            <option value="sixteenth note pair">sixteenth note pair</option>
+            <option value="sixteenth note">sixteenth note</option>
+
+
+          </select>
+
+          <select id="answerChoice2">
+            <option value="1/4 of a beat">1/4 of a beat</option>
+            <option value="1/2 of a beat">1/2 of a beat</option>
+            <option value="3/4 of a beat">3/4 of a beat</option>
+            <option value="1 beat">1 beat</option>
+            <option value="1 and 1/2 beats">1 and 1/2 beats</option>
+            <option value="2 beats">2 beats</option>
+            <option value="3 beats">3 beats</option>
+            <option value="4 beats">4 beats</option>
+          </select>
+
+
+  
+          
+          <button id = "submit">Submit</button>
+          <br><br>
+
+
+        <div id="result" style = "visibility:hidden"></div>
+        <br>
+        <button id = "new" style = "visibility:hidden">Create new exercise!</button>
+
+        
+        <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
+        <script text="text/javascript" src="rhythmRandomizer.js"></script>
+        <script text="text/javascript" src="practiceSound.js"></script>
+        
+     
+
+
+
+    </body>
+
+</html>
