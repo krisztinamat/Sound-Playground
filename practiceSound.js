@@ -51,15 +51,15 @@ function getAns2(ans){
     res.style.visibility = "visible";
 
     if(selectedCategory1 === ans[0] && selectedCategory2 === ans[1] ){
-        res.innerHTML = "Correct! Nice job!";
+        res.innerHTML = "Correct! Nice job!   ";
     }
 
     else if(selectedCategory1 === ans[0] ^ selectedCategory2 === ans[1]){
-        res.innerHTML = "Looks like you missed one part of the question. The answer is: " + ans[0] + ", which is worth " + ans[1] +".";
+        res.innerHTML = "Looks like you missed one part of the question. The answer is: " + ans[0] + ", which is worth " + ans[1] +".   ";
     }
 
     else{
-        res.innerHTML = "Not quite! The answer is: " + ans[0] + ", which is worth " + ans[1] + ".";
+        res.innerHTML = "Not quite! The answer is: " + ans[0] + ", which is worth " + ans[1] + ".   ";
     }
     generateNew.style.visibility = "visible";  
     generateNew.addEventListener("click", function(){window.location.reload()});        
