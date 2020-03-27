@@ -1,3 +1,5 @@
+function rhythm(){
+
 var VF = Vex.Flow;
 var div = document.getElementById("generatedExercise");
 var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -78,5 +80,52 @@ beams.forEach(function(b) {b.setContext(context).draw()})
 var submit = document.getElementById("submit");
 
 submit.addEventListener("click", function(){getAns2(ans)} );
+
+}
+
+function note(){
+
+var VF = Vex.Flow;
+var div = document.getElementById("generatedExercise");
+var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+
+renderer.resize(300, 150);
+var context = renderer.getContext();
+
+var stave = new VF.Stave(10, 20, 200);
+stave.addClef("treble");
+stave.setContext(context).draw();
+
+
+var noteBank = ["c/4", "d/4", "e/4", "f/4", "g/4", "a/4", "b/4", "c/5", "d/5",
+                "e/5", "f/5", "g/5", "a/5"]; 
+
+var ans = "";
+
+var randomElement = noteBank[Math.floor(Math.random() * noteBank.length)];
+
+ans = randomElement.substring(0,1).toUpperCase();
+
+var notes = [new VF.StaveNote({clef: "treble", keys: [randomElement], duration: "w" })];
+
+    var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+     voice.setStrict(false);
+     voice.addTickables(notes);
+     
+     // Format and justify the notes to 400 pixels.
+     var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 300); //400 adjusts the spacing between notes, and elements
+     
+     // Render voice
+     voice.draw(context, stave);
+
+
+var submit = document.getElementById("submit");
+
+submit.addEventListener("click", function(){getAns(ans)} );
+
+
+}
+
+
 
 

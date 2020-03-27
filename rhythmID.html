@@ -30,6 +30,7 @@
                     <a href="pitch_direction.html">Pitch Direction Trainer</a>
                     <a href="basicIntervals.html">Interval Drills</a>
                     <a href="rhythmID.html">Rhythm Identification</a>
+                    <a href="noteID.html">Note Identification</a>
                     <!--<a href="rhythm_grid1.html">Rhythm Grid</a>-->
                   </div>
                 </div> 
@@ -89,26 +90,22 @@
             <option value="4 beats">4 beats</option>
           </select>
 
-
-  
-          
           <button id = "submit">Submit</button>
           <br><br>
 
 
-        <div id="result" style = "visibility:hidden"></div>
-        <br>
-        <button id = "new" style = "visibility:hidden">Create new exercise!</button>
-
-        
+          <div id="result" style = "visibility:hidden"></div>
+          <br>
+          <button id = "new" style = "visibility:hidden">Create new exercise!</button>
+            
         <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
-        <script text="text/javascript" src="rhythmRandomizer.js"></script>
+        <script text="text/javascript" src="randomizer.js"></script>
         <script text="text/javascript" src="practiceSound.js"></script>
-        
-     
 
-
-
+          <script>
+            rhythm();
+          </script>
+  
     </body>
 
 </html>

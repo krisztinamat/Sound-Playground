@@ -44,43 +44,51 @@
          </h1>
 
             <h2>
-              Welcome to the Pitch Direction Trainer page! 
+              Welcome to the Note Identification page! 
             </h2>
         </div>
-
-        &#9834 Step 1: Click the "Listen" button. You will hear two notes.
+       
+        &#9834 Step 1: You will be shown a random note. Currently we support treble clef only (bass and alto coming soon!)
         <br>
-        &#9834 Step 2: Decide whether the music got higher (went up), got lower (went down), or stayed the same.
+        &#9834 Step 2: Select the correct note name, then press "Submit".
         <br>
-        &#9834 Step 3: Click the answer that matches your choice and press the "Submit" button.
-        <br>
-        &#9834 Step 4: Read your result and keep practicing!
+        &#9834 Step 3: Check your result and keep practicing!
+        
 
-        <br><br>
 
-        <button id = "listen">Listen</button>
+        <div id = "generatedExercise"> </div>
 
         <select id="answerChoice">
-          <option value="up">Music got higher (went up)</option>
-          <option value="down">Music got lower (went down)</option>
-          <option value="unison">Music stayed the same</option>
-        </select>
+            <option value="G">G</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            
 
-        
-        <button id = "submit">Submit</button>
-        <br><br>
+
+          </select>
+
+          <button id = "submit">Submit</button>
+          <br><br>
+
 
         <div id="result" style = "visibility:hidden"></div>
         <br>
         <button id = "new" style = "visibility:hidden">Create new exercise!</button>
 
         
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.12/Tone.js'></script>
-        <script text="text/javascript" src="directiontrainer.js"></script>
+        <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
+        <script text="text/javascript" src="randomizer.js"></script>
         <script text="text/javascript" src="practiceSound.js"></script>
-     
 
+        <script>
+            note();
+        </script>
 
+        
 
     </body>
 

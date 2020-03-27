@@ -72,43 +72,6 @@ html *
 }
 
         
-
-.menu
-{
-    width: 150px;
-    box-shadow: 3px 3px 5px #888888;
-    border-style: solid;
-    border-width: 1px;
-    border-color: grey;
-    border-radius: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    position: fixed;
-    display: none;
-    background-color: white;
-}
-
-.sharp{height: 20px;}
-.sharp:hover{background-color: rgb(187, 186, 250);
-    cursor: pointer;}
-.flat{height: 20px;}
-.flat:hover{background-color: rgb(187, 186, 250);
-    cursor: pointer;}
-.dbsharp{height: 20px;}
-.dbsharp:hover{background-color: rgb(187, 186, 250);
-    cursor: pointer;}
-.dbflat{height: 20px;}
-.dbflat:hover{background-color: rgb(187, 186, 250);
-    cursor: pointer;}
-.natural{height: 20px;}
-.natural:hover{background-color: rgb(187, 186, 250);
-    cursor: pointer;}
-.undo{height: 20px;}
-.undo:hover{background-color: rgb(187, 186, 250);
-    cursor: pointer;}
-
 .topcorner{
 position: absolute;
 top:10px;
