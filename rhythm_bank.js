@@ -297,10 +297,12 @@ function evaluate (ans, submit){
 
   }
   var symbols = new Map(); //1D15D
+
+  var mixedCharacters = "Ԁ";
   symbols.set(" ", " ");
-  symbols.set("whole note", "\uD834\uDD5D"); 
-  symbols.set("dotted half note", "\uD834\uDD5E \uD834\uDD6D");
-  symbols.set("half note", "\uD834\uDD5E");
+  symbols.set("whole note", "\u25E6"); 
+  symbols.set("dotted half note", "\u0500" +".");
+  symbols.set("half note", "\u0500");
   symbols.set("dotted quarter note", "\u2669.");
   symbols.set("quarter note", "\u2669");
   symbols.set("single eighth note", "\u266A");
