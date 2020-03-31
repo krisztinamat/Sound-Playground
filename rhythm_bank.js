@@ -301,9 +301,9 @@ function evaluate (ans, submit){
   symbols.set("whole note", "\uD834\uDD5D"); 
   symbols.set("dotted half note", "\uD834\uDD5E \uD834\uDD6D");
   symbols.set("half note", "\uD834\uDD5E");
-  symbols.set("dotted quarter note", "\uD834\uDD5F \uD834\uDD6D");
-  symbols.set("quarter note", "\uD834\uDD5F");
-  symbols.set("single eighth note", "\uD834\uDD60");
+  symbols.set("dotted quarter note", "\u2669.");
+  symbols.set("quarter note", "\u2669");
+  symbols.set("single eighth note", "\u266A");
 
 
   var res = document.getElementById("result");
