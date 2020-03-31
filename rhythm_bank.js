@@ -195,10 +195,12 @@ for(var i = 0; i < meas2.length; i++){
 }
 
 var submit = document.getElementById("submit");
-submit.addEventListener("click", function(){evaluate(ans)} );
+submit.addEventListener("click", function(){evaluate(ans, submit)} );
 
 
-function evaluate (ans){
+function evaluate (ans, submit){
+  submit.disabled = "disabled";
+
   compareBank = [];
   var m = document.getElementById("1choicesBeat1");
   m.disabled = "disabled";
