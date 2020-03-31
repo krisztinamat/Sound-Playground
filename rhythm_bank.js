@@ -13,15 +13,10 @@ stave.setContext(context).draw();
 var rhythmBank = new Map(); //key is a rhythm, value is beat total
 
 var answerBank = new Map();
+answerBank.set(1, ["","","","","","","",""]);
+answerBank.set(2, ["","","","","","","",""]);
 
-/*var eighthPair = [
-    new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" }),
-    new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" })
-  ];
 
-var eighths = VF.Beam(eighthPair); */
-
-//rhythmBank.set("eighth pair", [eighths, 1]);
 rhythmBank.set("eighth pair", ["8", 1] );
 rhythmBank.set("single eighth note",["8", 0.5] );
 rhythmBank.set("dotted quarter note", ["q", 1.5]);
@@ -36,9 +31,13 @@ var currentMeasure = [1, 4]; //first item is measure number, and second is remai
 
 var notes = [];
 
-
+var beams = [];
 
 while(currentMeasure[1] > 0 ){
+  var meas = currentMeasure[0];
+  var beatBox = (currentMeasure[1]*2)-1;
+
+
     var beatsLeft = currentMeasure[1];
     var randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
     console.log(randomElement);
@@ -53,6 +52,10 @@ while(currentMeasure[1] > 0 ){
 
 
     else{
+      var arr = answerBank.get(meas);
+      arr[beatBox]=randomElement;
+      answerBank.set(meas, arr);
+
         currentMeasure[1] = beatsLeft - beatValue;
 
         console.log("beats left " + currentMeasure[1]);
@@ -70,6 +73,8 @@ while(currentMeasure[1] > 0 ){
             notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
             notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" }) );
             currentMeasure[1] = currentMeasure[1] - 0.5;
+            arr[beatBox-3]="single eighth note";
+            answerBank.set(meas, arr);
           }
           else{
             notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
@@ -80,9 +85,14 @@ while(currentMeasure[1] > 0 ){
         else if(randomElement === "single eighth note"){
 
           if(currentMeasure[1] == 0.5){
-            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
-            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
-            currentMeasure[1] = 0;
+          notes2 = [];
+          notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+          notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+          beams.push(new VF.Beam(notes2));
+          notes = notes.concat(notes2);
+          currentMeasure[1] = 0;
+            arr[beatBox-1]="single eighth note";
+            answerBank.set(meas, arr);
 
             if(currentMeasure[1] == 0 && currentMeasure[0] < 2){
               notes.push(new VF.BarNote());
@@ -101,12 +111,17 @@ while(currentMeasure[1] > 0 ){
               notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
               notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }).addDot(0));
               currentMeasure[1] = currentMeasure[1] - 1.5;
+              arr[beatBox-1]="dotted quarter note";
+              answerBank.set(meas, arr);
             }
             else{
               notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
               notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }));
               notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
               currentMeasure[1] = currentMeasure[1] - 1.5;
+              arr[beatBox-1]="quarter note";
+              arr[beatBox-3] = "single eighth note";
+              answerBank.set(meas, arr);
             }
           }
           
@@ -114,8 +129,11 @@ while(currentMeasure[1] > 0 ){
         
         else if(randomElement === "eighth pair"){
           
-          notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
-          notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+          notes2 = [];
+          notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+          notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+          beams.push(new VF.Beam(notes2));
+          notes = notes.concat(notes2);
        
         }
         else
@@ -139,59 +157,192 @@ voice.setStrict(false);
 voice.addTickables(notes);
 
 VF.Formatter.FormatAndDraw(context, stave, notes);
-//beams.forEach(function(b) {b.setContext(context).draw()});
+beams.forEach(function(b) {b.setContext(context).draw()});
+
+answerBank.get(1).reverse();
+answerBank.get(2).reverse();
+console.log(answerBank);
+
+var ans = [];
+var meas1 = answerBank.get(1);
+var meas2 = answerBank.get(2);
+
+for(var i = 0; i < meas1.length; i++){
+  if(meas1[i] === "eighth pair"){
+    ans.push("single eighth note");
+    ans.push("single eighth note");
+    i++;
+  }
+  else if(meas1[i] == ""){
+    ans.push(" ");
+  }
+  else{
+    ans.push(meas1[i]);
+  }
+}
+for(var i = 0; i < meas2.length; i++){
+  if(meas2[i] === "eighth pair"){
+    ans.push("single eighth note");
+    ans.push("single eighth note");
+    i++;
+  }
+  else if(meas2[i] == ""){
+    ans.push(" ");
+  }
+  else{
+    ans.push(meas2[i]);
+  }
+}
+
+var submit = document.getElementById("submit");
+submit.addEventListener("click", function(){evaluate(ans)} );
 
 
+function evaluate (ans){
+  compareBank = [];
+  var m = document.getElementById("1choicesBeat1");
+  m.disabled = "disabled";
+  var value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
 
-// Format and justify the notes to 400 pixels.
-//var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+  m = document.getElementById("1choicesBeat1+");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
 
-// Render voice
-//voice.draw(context, stave); */ //STOP HERE
-   /* var beams = VF.Beam.generateBeams(notes);
-    Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
-    beams.forEach(function(b) {b.setContext(context).draw()}); */
+  m = document.getElementById("1choicesBeat2");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
 
-    addTable();
+  m = document.getElementById("1choicesBeat2+");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("1choicesBeat3");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("1choicesBeat3+");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("1choicesBeat4");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("1choicesBeat4+");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("2choicesBeat1");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("2choicesBeat1+");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("2choicesBeat2");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("2choicesBeat2+");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("2choicesBeat3");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("2choicesBeat3+");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("2choicesBeat4");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  m = document.getElementById("2choicesBeat4+");
+  m.disabled = "disabled";
+  value = m.options[m.selectedIndex].value;
+  compareBank.push(value);
+
+  totalCorrect = 16;
+
+  for(var i = 0; i < ans.length; i++){
+    if(compareBank[i] === "blank"){
+      compareBank[i] = " ";
+    }
+    if(ans[i] === compareBank[i]){
+      continue;
+    }
+    else{
+      totalCorrect--;
+    }
+
+  }
+  var symbols = new Map();
+  symbols.set(" ", " ");
+  symbols.set("whole note", "\uD834\uDD5D"); 
+  symbols.set("dotted half note", "\uD834\uDD5E \uD834\uDD6D");
+  symbols.set("half note", "\uD834\uDD5E");
+  symbols.set("dotted quarter note", "\uD834\uDD5F \uD834\uDD6D");
+  symbols.set("quarter note", "\uD834\uDD5F");
+  symbols.set("single eighth note", "\uD834\uDD60");
 
 
-    function addTable() {
-        console.log("hello");
-        var myTableDiv = document.getElementById("myDynamicTable");
-      
-        var table = document.createElement('TABLE');
-        table.border = '1';
-      
-        var tableBody = document.createElement('TBODY');
-        table.appendChild(tableBody);
-      
-        for (var i = 0; i < 2; i++) {
-          var tr = document.createElement('TR');
-          tableBody.appendChild(tr);
-      
-          for (var j = 0; j < 16; j++) {
-            var td = document.createElement('TD');
-            td.width = '75';
-            if(i == 0 ){
-            if(j%2 == 0){
-              if(j == 0 || j == 8){td.appendChild(document.createTextNode("1"));}
-              if(j == 2 || j == 10){td.appendChild(document.createTextNode("2"));}
-              if(j == 4 || j == 12){td.appendChild(document.createTextNode("3"));}
-              if(j == 6 || j == 14){td.appendChild(document.createTextNode("4"));}
-            }
-            else{
-              td.appendChild(document.createTextNode("+"));
-            }
-            
-            }
-            else{
-                td.appendChild(document.createTextNode('\xa0'));
-                tr.style.emptyCells = "show";
+  var res = document.getElementById("result");
+    var generateNew = document.getElementById("new");
+    res.style.visibility = "visible";
 
-            }
-            tr.appendChild(td);
-          }
+    if(totalCorrect === 16){
+        res.innerHTML = "Correct! Nice job!";
+    }
+
+    else{
+        res.innerHTML = "Looks like you missed something. Check the answer in the grid below."}
+
+    var body = document.getElementById("answer");
+    answer.style.visibility = "visible";
+    tbl  = document.createElement('table');
+    tbl.style.fontSize = '16px';
+    tbl.style.width  = '100%';
+   // tbl.style.border = '1px solid black';
+
+    for(var i = 0; i < 1; i++){
+        var tr = tbl.insertRow();
+        for(var j = 0; j < 16; j++){
+           
+                var td = tr.insertCell();
+                td.style.width = "20px"
+                var boxInfo = symbols.get(ans[j]);
+                td.appendChild(document.createTextNode(boxInfo));
+                td.style.border = '1px solid black';
+          
         }
-        myTableDiv.appendChild(table);
-      }
+    }
+    answer.appendChild(tbl);
+    
+    generateNew.style.visibility = "visible";  
+    generateNew.addEventListener("click", function(){window.location.reload()}); 
+  
 
+}
+
+
+
+
+  

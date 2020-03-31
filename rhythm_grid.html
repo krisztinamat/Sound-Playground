@@ -11,7 +11,13 @@
            h2{
                font-size: 24px;
            } 
-            
+
+           
+        th, td {
+        border: 1px solid black;
+        }
+
+
 
         </style>
 
@@ -44,18 +50,242 @@
          </h1>
 
             <h2>
-                Rhythm Grid: Version 1
+              Welcome to the Rhythm Grid page!
             </h2>
         </div>
 
-        Welcome to the Rhythm Grid Activity: Version 1! 
+
+        
+  
+        &#9834 Step 1: You will receive a random two measure rhythm. The smallest value is an eighth note. The grid below is divided into eighth note value subdivisions.
         <br>
-        Below you will find a two measure exercise in 4/4 time. Your job is to map the rhythms to their appropriate beat contained in the grid beneath the music.
+        &#9834 Step 2: If a grid box (beat) should contain a note, select it in that box's menu. Otherwise, leave it blank. When you are finished, press "Submit."
+        <br>
+        &#9834 Step 3: The correct grid will be revealed for you to examine. Practice counting out loud and clapping when you see a note in the box.
+        <br>
+        &#9834 Step 4: Keep practicing!
+
 
         <div id = "generatedExercise"> </div>
-        <div id = "myDynamicTable"></div>
+        <table id = "beats" style="width:100%">
+          <tr>
+            <th>1</th>
+            <th>+</th> 
+            <th>2</th>
+            <th>+</th>
+            <th>3</th>
+            <th>+</th>
+            <th>4</th>
+            <th>+</th>
+            <th>1</th>
+            <th>+</th> 
+            <th>2</th>
+            <th>+</th>
+            <th>3</th>
+            <th>+</th>
+            <th>4</th>
+            <th>+</th>
+          </tr>
+         
+        </table>
+        
+        <table id = "answers">
+          <table id = "beats" style="width:100%">
+            <tr>
+              
+                <td>
+                  <select id="1choicesBeat1">
+                    <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+                  </select></td>
+                <td><select id = "1choicesBeat1+">
+                  <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+              </select></td>
+                <td><select id = "1choicesBeat2" >
+                  <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+              </select></td>
+                <td><select id = "1choicesBeat2+">
+                  <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+              </select></td> 
+                <td><select id = "1choicesBeat3">
+                  <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+              </select></td>
+                <td><select id = "1choicesBeat3+" >
+                  <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+              </select> </td>
+                <td><select id = "1choicesBeat4" >
+                  <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+              </select></td>
+                <td><select id = "1choicesBeat4+" >
+                  <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+              </select></td> 
+                    <td><select id = "2choicesBeat1">
+                      <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+                  </select> </td>
+                    <td><select id = "2choicesBeat1+" >
+                      <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+                  </select> </td>
+                    <td><select id = "2choicesBeat2">
+                      <option value="blank"> </option>
+                      <option value="whole note">&#119133</option>
+                      <option value = "dotted half note">&#119134 &#119149</option>
+                      <option value = "half note">&#119134</option>
+                      <option value = "dotted quarter note">&#119135 &#119149</option>
+                      <option value = "quarter note">&#119135</option>
+                      <option value = "single eighth note">&#119136 </option>
+                  </select> </td>
+                    <td><select id = "2choicesBeat2+" >
+                      <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+                  </select></td> 
+                    <td><select id = "2choicesBeat3" >
+                      <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+                  </select> </td>
+                    <td><select id = "2choicesBeat3+" >
+                      <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+                  </select></td>
+                    <td><select id = "2choicesBeat4">
+                      <option value="blank"> </option>
+                  <option value="whole note">&#119133</option>
+                  <option value = "dotted half note">&#119134 &#119149</option>
+                  <option value = "half note">&#119134</option>
+                  <option value = "dotted quarter note">&#119135 &#119149</option>
+                  <option value = "quarter note">&#119135</option>
+                  <option value = "single eighth note">&#119136 </option>
+                  </select> </td>
+                    <td><select id = "2choicesBeat4+" >
+                      <option value="blank"> </option>
+                      <option value="whole note">&#119133</option>
+                      <option value = "dotted half note">&#119134 &#119149</option>
+                      <option value = "half note">&#119134</option>
+                      <option value = "dotted quarter note">&#119135 &#119149</option>
+                      <option value = "quarter note">&#119135</option>
+                      <option value = "single eighth note">&#119136 </option>
+                  </select></td>     
+      
+                </tr>
+
+        </table>
+
+
+
         <br>
+
         <button id = "submit">Submit</button>
+        <br>
+        <br>
+
+        <div id="result" style = "visibility:hidden">
+        
+        </div>
+          <br>
+        
+          <div id = "answer" style = "visibility: hidden">
+            <table id = "beats2" style="width:100%">
+              <tr>
+                <th>1</th>
+                <th>+</th> 
+                <th>2</th>
+                <th>+</th>
+                <th>3</th>
+                <th>+</th>
+                <th>4</th>
+                <th>+</th>
+                <th>1</th>
+                <th>+</th> 
+                <th>2</th>
+                <th>+</th>
+                <th>3</th>
+                <th>+</th>
+                <th>4</th>
+                <th>+</th>
+              </tr>
+             
+            </table>
+          </div>
+          
+          <br>
+          <button id = "new" style = "visibility:hidden">Create new exercise!</button>
+            
+        <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
+        <script text="text/javascript" src="randomizer.js"></script>
+        <script text="text/javascript" src="practiceSound.js"></script>
 
         
         <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>

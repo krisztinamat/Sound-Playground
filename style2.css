@@ -6,6 +6,8 @@ html *
 
    
 }
+
+
 .answerChoice.dropdown:hover{
   background-color: rgb(187, 186, 250)
 }
@@ -153,16 +155,6 @@ transform: translateY(4px);
   transform: translateY(4px);
   }
 
-#tonality {
-background-color: white; 
-color: black; 
-border: 2px solid  rgb(187, 186, 250);
-}
-
-#tonality:hover{
-background-color: rgb(187, 186, 250);
-color: white;
-}
 
 #listen {
 background-color: white; 
@@ -206,4 +198,8 @@ border: 2px solid  rgb(187, 186, 250);
 #rst:hover{
 background-color: rgb(187, 186, 250);
 color: white;
+}
+
+th, td {
+  padding: 5px;
 }
