@@ -414,7 +414,7 @@ function evaluate (ans, submit){
   symbols.set("dotted quarter note", "\u2669.");
   symbols.set("quarter note", "\u2669");
   symbols.set("single eighth note", "\u266A");
-  symbols.set("dotted eighth note", "\u266A");
+  symbols.set("dotted eighth note", "\u266A.");
   symbols.set("single sixteenth note", "\u16AB");
 
 
