@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+        <link rel="stylesheet" type="text/css" href="style3.css">
+
+    <head>
+        <title> Music Math Mash-up</title>
+        <style>
+           h1{
+               font-size: 36px;
+           }
+           h2{
+               font-size: 20px;
+           } 
+
+           
+        th, td {
+        border: 1px solid black;
+        }
+
+
+
+        </style>
+
+    </head>
+    <body>
+      <div class="header">
+            
+
+        <div class="navbar">
+            <a href="playground_elementary.html">Home</a>
+            <div class="dropdown">
+              <button class="dropbtn">Practice! 
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="pitch_direction.html">Pitch Direction Trainer</a>
+                <a href="basicIntervals.html">Interval Drills</a>
+                <a href="rhythmID.html">Rhythm Identification</a>
+                <a href="noteID.html">Note Identification</a> 
+               <a href="rhythm_grid.html">Rhythm Grids</a>
+               <a href="musicalmath.html">Music Math Mash-up</a>
+              </div>
+            </div> 
+            <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>
+            <a href="aboutpage.html">About</a>
+          </div>
+
+          <h1>
+            &#9835 Sound Playground: Elementary Edition &#9835
+         
+     </h1>
+     <h2>
+      Welcome to Music Math Mash-up! 
+    </h2>
+
+    </div>
+
+
+        
+  
+        &#9834 Step 1: Choose your level in the first menu to generate a randomized musical math problem! Use your knowledge of beat values to solve it!
+        <br>
+        &#9834 Step 2: Select your answer in the menu OR type your answer and press "Submit."
+        <br>
+        &#9834 Step 3: The correct answer will be revealed. If you made a mistake, double-check your math. 
+        <br>
+        &#9834 Step 4: Keep practicing!
+        <br><br>
+
+        NOTE: for typed answers, if you are not entering a whole number, improper fractions (example: 1/4 or 10/3) are recommended! For non-repeating decimals, decimal format is also acceptable.
+      
+        
+       <br><br>
+      
+
+       <select id= "level">
+        <option value = 1>Level One: Whole numbers (answers as rhythms)</option> 
+        <option value = 2>Level Two: Whole numbers (answers as numbers)</option> 
+        <option value = 3>Level Three: Fractional numbers (answers as rhythms)</option> 
+        <option value = 4>Level Four: Fractional numbers (answers as numbers)</option>    
+      </select>
+      
+       <input type="checkbox" id="bonus" name="bonus" value= true> 
+         <label for="bonus">Add a bonus operation</label>
+        
+      <button id = "exercise" onclick="generateQuestion()">Generate!</button> 
+      
+      <br> <br>
+
+      <div id= "question" style= "visibility: hidden;">
+      
+        <div id = "wrapper">
+
+          <div id = "generatedExercise">    
+          </div>
+  
+          <input type="text" id="solution" name="numSolution" style = "width: 50px; visibility: hidden;"  >
+  
+          
+          <div id="select_join" style="visibility: hidden;"  >
+              <select id = "answerChoices" > 
+                  <option value="whole note"> &#1995</option>
+                  <option value = "dotted half note"> &#5243</option>
+                  <option value = "half note"> &#5231</option>
+                  <option value = "quarter note"> &#9833</option>
+                  <option value = "dotted quarter note" style = "visibility: hidden;"> &#9833.</option>
+                  <option value = "eighth note" style = "visibility: hidden;"> &#9834</option>
+                  <option value = "dotted eighth note" style = "visibility: hidden;"> &#9834.</option>
+                  <option value = "sixteenth note" style = "visibility: hidden;">&#5803</option>
+          </select>
+          </div>
+  
+          
+  
+        </div>
+  
+        <button id = "submit">Submit</button>
+      
+      </div>
+
+        
+        <br>
+        <br>
+
+        <div id="result" style = "visibility:hidden">
+        
+        </div>
+          <br>
+        
+          <div id = "answer" style = "visibility: hidden">
+    
+          </div>
+          
+          
+          <button id = "new" style = "visibility:hidden">Create new exercise!</button>
+
+        <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
+        <script text="text/javascript" src="mathgenerator.js"></script>
+
+        
+     
+
+
+
+    </body>
+
+</html>

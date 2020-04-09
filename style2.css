@@ -73,6 +73,51 @@ html *
   display: block;
 }
 
+#wrapper {
+  display: flex;
+  height: 100px;
+}
+
+
+.generatedExercise {
+  float:left;
+  width:80%;
+  overflow:hidden;
+  
+}
+.solution{
+  height:100px;
+  width: 50px
+}
+
+#select_join {
+  float:left;
+  width:20%;
+  overflow:hidden;
+width: 100px;
+height: 100px;
+overflow: hidden;
+border: black 1px solid;
+
+  
+}
+
+
+
+#select_join select {
+  
+  background: transparent;
+  width: 100px;
+  font-size:48pt;
+  color:black;
+  border: 0;
+  border-radius: 0;
+  height: 100px;
+  
+ 
+  
+  }
+
         
 .topcorner{
 position: absolute;
