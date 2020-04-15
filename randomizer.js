@@ -1,5 +1,47 @@
-function rhythm(){
+window.onload = function(){
+    //localStorage.clear();
+    //console.log(localStorage);
+    if(localStorage.getItem("mode") != null){
+        var mode = localStorage.getItem("mode");
+        if(mode === "rhythm"){
+            var type = document.getElementById("mode");
+            type.value = 2;
+            type.disabled = "disabled";
+            this.generateQuestion(2);
+        }
+        else{
+            var type = document.getElementById("mode");
+            type.value = 1;
+            type.disabled = "disabled";
+            this.generateQuestion(1);
+        }
+    }
+}
 
+function generateQuestion(type){
+    var btn = document.getElementById("exercise");
+    exercise.disabled = true;
+    var submit = document.getElementById("submit");
+    submit.style.visibility = "visible";
+    if(type == null){
+    var mode = document.getElementById("mode");
+    mode.disabled = "disabled";
+    type = mode.options[mode.selectedIndex].value;
+    }
+
+    if(type == 1){
+        var menu = document.getElementById("notes");
+        menu.style.visibility = "visible";
+        note("note");
+    }
+    else{
+        var menu = document.getElementById("rhythms");
+        menu.style.visibility = "visible";
+        rhythm("rhythm");
+    }
+}
+
+function rhythm(rhythm){
 var VF = Vex.Flow;
 var div = document.getElementById("generatedExercise");
 var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -79,11 +121,11 @@ beams.forEach(function(b) {b.setContext(context).draw()})
 
 var submit = document.getElementById("submit");
 
-submit.addEventListener("click", function(){getAns2(ans)} );
+submit.addEventListener("click", function(){getAns2(ans, rhythm)} );
 
 }
 
-function note(){
+function note(note){
 
 var VF = Vex.Flow;
 var div = document.getElementById("generatedExercise");
