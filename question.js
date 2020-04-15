@@ -102,6 +102,10 @@ function buildQuestion(selectedLevel){
     else if(selectedLevel == 3){
         intervalArray = [0, 1, 2, 3, 4]; 
     }
+
+    else if(selectedLevel == 4){
+        intervalArray = [0, 1, 2, 3, 4, 5, 6, 7]; 
+    }
     
     var current = index1;
     var current1 = index1;
@@ -133,6 +137,10 @@ function buildQuestion(selectedLevel){
         var nextindex1 = (nextNote1 * nextdirection1)+ position1;
         nextNote1 = arrayPossible[nextindex1];
 
+        if(nextNote1 == null){
+            continue;
+        }
+
         if(j == 1){
            if(notesArray[1] === nextNote1){
                continue;
@@ -162,6 +170,10 @@ function buildQuestion(selectedLevel){
         } 
         var nextindex2 = (nextNote2 * nextdirection2)+ position2;  
         nextNote2 = arrayPossible[nextindex2];
+
+        if(nextNote2 == null){
+            continue;
+        }
 
         if(j == 2){
            if(notesArray[2] === nextNote2){
