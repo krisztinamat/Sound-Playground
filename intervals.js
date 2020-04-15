@@ -1,25 +1,45 @@
-function generateQuestion(){
+window.onload = function(){
+    //localStorage.clear();
+    //console.log(localStorage);
+    if(localStorage.getItem("intval") != null){
+        this.generateQuestion(Number(localStorage.getItem("intval")));
+    }
+}
+
+function generateQuestion(intval){
     var btn = document.getElementById("exercise");
     btn.disabled = true;
 
     var question = document.getElementById("question");
     question.style.visibility = "visible";
 
+    var selectedLevel = "";
 
-    //get the level selected
+    if(intval != null){
+    
+        var level = document.getElementById("level");
+        level.value = intval;
+        level.disabled = "disabled";
+        selectedLevel = intval;
+    
+    }
+
+    else{
+            //get the level selected
     var level = document.getElementById("level");
     level.disabled = "disabled";
-    var selectedLevel = level.options[level.selectedIndex].value;
+    selectedLevel = level.options[level.selectedIndex].value;
+    }
 
     var answerChoice = document.getElementById("answerChoice");
 
-    if(selectedLevel == "1"){
+    if(selectedLevel == 1){
     answerChoice.options[0].style.visibility = "visible";
     answerChoice.options[1].style.visibility = "visible"; 
 
     }
 
-    if(selectedLevel == "2"){
+    if(selectedLevel == 2){
     answerChoice.options[1] = null; //gets rid of "different note" category
     answerChoice.options[0].style.visibility = "visible";
     answerChoice.options[1].style.visibility = "visible";
@@ -27,7 +47,7 @@ function generateQuestion(){
     //answerChoice.options[3].style.visibility = "visible";   
     }
 
-    if(selectedLevel == "3"){
+    if(selectedLevel == 3){
     answerChoice.options[1] = null; //gets rid of "different note" category
     answerChoice.options[0].style.visibility = "visible";
     answerChoice.options[1].style.visibility = "visible";
@@ -36,7 +56,7 @@ function generateQuestion(){
     //answerChoice.options[4].style.visibility = "visible";   
     }
 
-    if(selectedLevel == "4"){
+    if(selectedLevel == 4){
     answerChoice.options[1] = null; //gets rid of "different note" category
     answerChoice.options[0].style.visibility = "visible";
     answerChoice.options[1].style.visibility = "visible";
@@ -45,8 +65,30 @@ function generateQuestion(){
     answerChoice.options[4].style.visibility = "visible"; 
     //answerChoice.options[5].style.visibility = "visible";   
     }
+    if(selectedLevel == 5){
+        answerChoice.options[1] = null; //gets rid of "different note" category
+        answerChoice.options[0].style.visibility = "visible";
+        answerChoice.options[1].style.visibility = "visible";
+        answerChoice.options[2].style.visibility = "visible"; 
+        answerChoice.options[3].style.visibility = "visible"; 
+        answerChoice.options[4].style.visibility = "visible"; 
+        answerChoice.options[5].style.visibility = "visible";   
+        }
+        if(selectedLevel == 6){
+            answerChoice.options[1] = null; //gets rid of "different note" category
+            answerChoice.options[0].style.visibility = "visible";
+            answerChoice.options[1].style.visibility = "visible";
+            answerChoice.options[2].style.visibility = "visible"; 
+            answerChoice.options[3].style.visibility = "visible"; 
+            answerChoice.options[4].style.visibility = "visible"; 
+            answerChoice.options[5].style.visibility = "visible"; 
+            answerChoice.options[6].style.visibility = "visible"; 
+            answerChoice.options[7].style.visibility = "visible";   
+            }
 
     buildQuestion(selectedLevel);
+
+        
 
 }
 
@@ -76,6 +118,13 @@ function buildQuestion(selectedLevel){
 
     if(selectedLevel == 4){
         intervalArray = [0, 2, 4, 5, 7];
+    }
+
+    if(selectedLevel == 5){
+        intervalArray = [0, 2, 4, 5, 7, 9];
+    }
+    if(selectedLevel == 6){
+        intervalArray = [0, 2, 4, 5, 7, 9, 11, 12];
     }
 
     if(selectedLevel == 1){
@@ -118,6 +167,15 @@ function buildQuestion(selectedLevel){
         if(interval == 7){
             ans = "Fifth (do-sol or sol-do)";
         }
+        if(interval == 9){
+            ans = "Sixth (do-la or la-do)";
+        }
+        if(interval == 11){
+            ans = "Seventh (do-ti or ti-do)";
+        }
+        if(interval == 12){
+            ans = "Octave (do-do)";
+        }
 
         //console.log(ans);
         
@@ -128,7 +186,7 @@ function buildQuestion(selectedLevel){
     notesArray.push(note1);
     notesArray.push(note2);
 
-    practice2(notesArray, ans);
+    practice2(notesArray, ans, true, selectedLevel);
 
 }
 

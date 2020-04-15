@@ -7,14 +7,16 @@ function practice(notesArray, ans){
     submit.addEventListener("click", function(){getAns0(ans)} );
 }
 
-function practice2(notesArray, ans){
+function practice2(notesArray, ans, boolean, level){
     var listen = document.getElementById("listen2");
     var submit = document.getElementById("submit2");
     
     listen.addEventListener("click", function(){getSound1(notesArray, listen, submit)});
-    submit.addEventListener("click", function(){getAns0(ans)} );
+    submit.addEventListener("click", function(){getAns0(ans, boolean, level)} );
+   
+    
 }
-function getAns0(ans){
+function getAns0(ans, boolean, level){
     var category = document.getElementById("answerChoice");
     category.disabled = "disabled";
     var selectedCategory = category.options[category.selectedIndex].text;
@@ -30,9 +32,27 @@ function getAns0(ans){
     else{
         res.innerHTML = "Not quite! The answer was: " + ans;
     }
-    generateNew.style.visibility = "visible";
-    generateNew.addEventListener("click", function(){
-        window.location.reload()});  
+
+    if(boolean == false){
+       
+        generateNew.style.visibility = "visible";
+        generateNew.addEventListener("click", function(){
+        window.location.reload()}); 
+
+    }
+    else{
+        var sameintval = document.getElementById("sameintval");
+        sameintval.style.visibility = "visible"; 
+        sameintval.addEventListener("click", function(){
+        localStorage.setItem("intval", level+"");
+        //alert(localStorage);
+        window.location.reload()});
+
+        generateNew.style.visibility = "visible";
+        generateNew.addEventListener("click", function(){localStorage.removeItem("intval");
+            window.location.reload()}); 
+
+    }
 
 }
 

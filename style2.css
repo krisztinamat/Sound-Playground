@@ -135,6 +135,16 @@ border: black 1px solid;
     color: white;
     }
 
+    #sameintval {
+      background-color: white; 
+      color: black; 
+      border: 2px solid  rgb(187, 186, 250);
+      }
+      
+      #sameintval:hover{
+      background-color: rgb(187, 186, 250);
+      color: white;
+      }
 
 
 #select_join select {
