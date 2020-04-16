@@ -1,8 +1,19 @@
-function generateQuestion(){
+window.onload = function(){
+    //localStorage.clear();
+    //console.log(localStorage);
+    if(localStorage.getItem("lvlmath") != null){
+        this.generateQuestion(Number(localStorage.getItem("lvlmath")));
+    }
+}
+
+function generateQuestion(lvlmath){
     var btn = document.getElementById("exercise");
     btn.disabled = true;
 
     var chk = document.getElementById("bonus");
+    if(localStorage.getItem("checked") != null){
+        chk.checked = true;
+    }
     chk.disabled = true;
 
     var boolean = false;
@@ -14,10 +25,20 @@ function generateQuestion(){
 
     var question = document.getElementById("question");
     question.style.visibility = "visible";
-
+        var value = "";
+        if(lvlmath == null){
         var m = document.getElementById("level");
         m.disabled = "disabled";
-        var value = m.options[m.selectedIndex].value;
+        value = m.options[m.selectedIndex].value;
+        }
+        else{
+        var level = document.getElementById("level");
+        value = lvlmath;
+        level.value = lvlmath;
+        level.disabled = "disabled";
+
+        }
+        
         if(value ==1){
             lvl1(boolean);
         }
@@ -195,7 +216,7 @@ function lvl1(boolean){
     box.style.visibility = "visible";
 
 var submit = document.getElementById("submit");
-submit.addEventListener("click", function(){evaluate1(ans, submit, symbols)} );
+submit.addEventListener("click", function(){evaluate1(ans, submit, symbols, 1, boolean)} );
 
 
 }
@@ -369,7 +390,7 @@ function lvl2(boolean){
     box.style.visibility = "visible";
 
 var submit = document.getElementById("submit");
-submit.addEventListener("click", function(){evaluate2(ans, submit, box)} );
+submit.addEventListener("click", function(){evaluate2(ans, submit, box, 2, boolean)} );
 
 
 }
@@ -541,7 +562,7 @@ function lvl3(boolean){
     answerChoices.options[7].style.visibility = "visible";
 
 var submit = document.getElementById("submit");
-submit.addEventListener("click", function(){evaluate1(ans, submit, symbols)} );
+submit.addEventListener("click", function(){evaluate1(ans, submit, symbols, 3, boolean)} );
 
 
 }
@@ -707,12 +728,12 @@ else{
     box.style.visibility = "visible";
 
 var submit = document.getElementById("submit");
-submit.addEventListener("click", function(){evaluate2(ans, submit, box)} );
+submit.addEventListener("click", function(){evaluate2(ans, submit, box, 4, boolean)} );
 
 
 }
 
-function evaluate2(ans, submit, box){
+function evaluate2(ans, submit, box, level, boolean){
 submit.disabled = "disabled";
 box.disabled = "disabled";
 
@@ -738,16 +759,26 @@ else{
     res.innerHTML = "Not quite. The correct answer is " +  ans +" beat(s).";
 }
 
-
 generateNew.style.visibility = "visible";  
-generateNew.addEventListener("click", function(){window.location.reload()}); 
+    var samemode = document.getElementById("samemode");
+    samemode.style.visibility = "visible"; 
+    samemode.addEventListener("click", function(){
+    if(boolean){
+        localStorage.setItem("checked", "yes");
+    }
+    localStorage.setItem("lvlmath", level+"");
+    //alert(localStorage);
+    window.location.reload()});
+    generateNew.addEventListener("click", function(){localStorage.removeItem("lvlmath");
+    localStorage.removeItem("checked");
+        window.location.reload()});
 
 
 
 }
    
 
-    function evaluate1 (ans, submit, symbols){
+    function evaluate1 (ans, submit, symbols, level, boolean){
         submit.disabled = "disabled";
 
         answerBank = new Map();
@@ -777,8 +808,18 @@ generateNew.addEventListener("click", function(){window.location.reload()});
     else{
         res.innerHTML = "Not quite. The correct answer is " + symbols.get(ans)[0] +" beat(s), so you need to select " + symbols.get(ans)[1];}
 
-    
-    generateNew.style.visibility = "visible";  
-    generateNew.addEventListener("click", function(){window.location.reload()}); 
+        generateNew.style.visibility = "visible";  
+        var samemode = document.getElementById("samemode");
+        samemode.style.visibility = "visible"; 
+        samemode.addEventListener("click", function(){
+            if(boolean){
+                localStorage.setItem("checked", "yes");
+            }
+        localStorage.setItem("lvlmath", level+"");
+        //alert(localStorage);
+        window.location.reload()});
+        generateNew.addEventListener("click", function(){localStorage.removeItem("lvlmath");
+        localStorage.removeItem("checked");
+            window.location.reload()});
 
     }
