@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+
+        <head>
+            <title> Sound Playground: Elementary Edition</title>
+            <style>
+               h1{
+                   font-size: 36px;
+               }
+               h2{
+                   font-size: 24px;
+               } 
+                
+    
+            </style>
+    
+        </head>
+        <body>
+            <div class="header">
+                
+    
+                <div class="navbar">
+                    <a href="playground_elementary.html">Home</a>
+                    <div class="dropdown">
+                      <button class="dropbtn">Practice! 
+                        <i class="fa fa-caret-down"></i>
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="pitch_direction.html">Pitch Direction Trainer</a>
+                        <a href="basicIntervals.html">Interval Drills</a>
+                        <a href="identifier.html">Note and Rhythm Identification</a>
+                       <a href="rhythm_grid.html">Rhythm Grids</a>
+                       <a href="musicalmath.html">Music Math Mash-up</a>
+                       <a href="pitch_dictation.html">Tone Machine</a>
+                       <a href="rhythm_dictation.html">Rhythm Machine</a>
+                       <a href="melodic_dictation.html">Melody Machine</a>
+                      </div>
+                    </div> 
+                    <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>
+                    <a href="aboutpage.html">About</a>
+                    <a href="feedback.html">Feedback</a>
+                  </div>
+    
+                  <h1>
+                    <span style="color: rgb(187, 120, 250); font-size: 36px;">&#9835</span> Sound Playground: Elementary Edition <span style="color: rgb(187, 120, 250); font-size: 36px;">&#9835</span>
+             </h1>
+             <h2>
+                Welcome to the Melody Machine: for basic melodic dictation! 
+            
+              </h2>
+      
+              </div>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your levels for pitch and rhythm and press "Generate!" Your exercise will appear below.
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Click the "Listen" button. You will hear a one measure melody in 4/4 time.
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Click the box which contains the correct answer. It will be highlighted for you. 
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Press the submit button to check your answer, and keep practicing! You can choose to continue with the same level, or generate from a new one.
+
+        <br><br>
+
+        Pitch level:
+        <select id= "levelPitch">
+            <option value = 1>Level One: same notes and one step away</option> <!--  same or different notes-->
+            <option value = 2>Level Two: same notes, steps, and skips</option> <!-- same, seconds or thirds in a major key-->
+            <option value = 3>Level Three: up to a perfect fifth </option> <!--same, seconds, thirds, fourths in a major key -->
+            <option value = 4>Level Four: up to an octave </option> <!--same, seconds, thirds, fourths in a major key -->  
+        </select>
+       <br><br>
+        Rhythm level:
+        
+        <select id= "levelRhythm">
+            <option value = 1>Level One: dotted half notes, half notes, and quarter notes</option> 
+            <option value = 2>Level Two: half notes, quarter notes, and eighth pairs</option> 
+            <option value = 3>Level Three: dotted quarters and syncopation</option> 
+            <option value = 4>Level Four: simple sixteenth groups</option>
+            <option value = 5>Level Five: syncopation with sixteenth notes</option>   
+        </select>
+       <br><br>
+        <button id = "exercise" onclick="generateQuestion(null, null)">Generate!</button>
+
+       
+        <div id= "question" style= "visibility: hidden">
+            <br>
+        
+            <button id = "listen2">Listen</button>
+            <br><br>
+
+                <div id = "wrapper">
+                    <div id="A" style = "width: 450px; height: 160px;"onclick="highlight('A')">A: </div>
+                    &nbsp; &nbsp;
+    
+                    <div id="B" style = "width: 450px; height: 160px;"onclick="highlight('B')">B:</div>
+                    &nbsp; &nbsp;
+
+                </div>
+                <br><br><br><br>
+
+                <div id = "wrapper2">
+                    <div id="C" style = "width: 450px; height: 160px;" onclick="highlight('C')">C:</div>
+                    &nbsp; &nbsp;
+    
+                    <div id="D" style = "width: 450px; height: 160px;"onclick="highlight('D')">D:</div>
+                    &nbsp; &nbsp;
+
+                </div>
+    
+            <button id = "submit2">Submit</button>
+            </div>
+            <br><br>
+        
+       
+
+
+        <div id="result" style = "visibility:hidden"></div>
+        <br>
+        <button id = "samelvl" style = "visibility:hidden">New exercise: same level</button> &nbsp; &nbsp;
+        <button id = "new" style = "visibility:hidden">New exercise: new level</button>
+
+        
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.12/Tone.js'></script>
+        <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
+        <script text="text/javascript" src="constructmelody.js"></script>
+        <script text="text/javascript" src="displaymelody.js"></script>
+        <script text="text/javascript" src="audioinput.js"></script>
+
+    </body>
+
+</html>
