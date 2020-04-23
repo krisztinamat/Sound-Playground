@@ -313,7 +313,7 @@ function evaluate (ans, submit){
     res.style.visibility = "visible";
 
     if(totalCorrect === 16){
-        res.innerHTML = "Correct! Nice job!";
+        res.innerHTML = "Correct! \u266B";
     }
 
     else{

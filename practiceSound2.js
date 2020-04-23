@@ -4,7 +4,7 @@ function practice(notesArray, ans){
     var submit = document.getElementById("submit");
     
     listen.addEventListener("click", function(){getSound1(notesArray, listen, submit)});
-    submit.addEventListener("click", function(){getAns0(ans)} );
+    submit.addEventListener("click", function(){getAns0(ans, boolean, level)} );
 }
 
 function practice2(notesArray, ans, boolean, level){
@@ -16,6 +16,38 @@ function practice2(notesArray, ans, boolean, level){
    
     
 }
+
+function practice3(notesArray, ans){
+    listen.addEventListener("click", function(){getSound1(notesArray, listen, submit)});
+    submit.addEventListener("click", function(){getAns3(ans)} );
+
+}
+function getAns3(ans){
+    var category = document.getElementById("answerChoice");
+    category.disabled = "disabled";
+    var selectedCategory = category.options[category.selectedIndex].text;
+
+    var res = document.getElementById("result");
+    var generateNew = document.getElementById("new");
+    res.style.visibility = "visible";
+
+    if(selectedCategory === ans){
+        res.innerHTML = "Correct! \u266B";
+    }
+
+    else{
+        res.innerHTML = "Not quite! The answer was: " + ans;
+    }
+
+       
+        generateNew.style.visibility = "visible";
+        generateNew.addEventListener("click", function(){
+        window.location.reload()}); 
+
+   
+
+}
+
 function getAns0(ans, boolean, level){
     var category = document.getElementById("answerChoice");
     category.disabled = "disabled";
@@ -26,7 +58,7 @@ function getAns0(ans, boolean, level){
     res.style.visibility = "visible";
 
     if(selectedCategory === ans){
-        res.innerHTML = "Correct! Nice job!";
+        res.innerHTML = "Correct! \u266B";
     }
 
     else{
@@ -66,7 +98,7 @@ function getAns(ans, selectedCategory, note){
     res.style.visibility = "visible";
 
     if(selectedCategory === ans){
-        res.innerHTML = "Correct! Nice job!";
+        res.innerHTML = "Correct! \u266B";
     }
 
     else{
@@ -99,7 +131,7 @@ function getAns2(ans, rhythm){
     res.style.visibility = "visible";
 
     if(selectedCategory1 === ans[0] && selectedCategory2 === ans[1] ){
-        res.innerHTML = "Correct! Nice job!   ";
+        res.innerHTML = "Correct! \u266B";
     }
 
     else if(selectedCategory1 === ans[0] ^ selectedCategory2 === ans[1]){

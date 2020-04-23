@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+
+    <head>
+        <title> Sound Playground: Elementary Edition</title>
+        <style>
+           h1{
+               font-size: 36px;
+           }
+           h2{
+               font-size: 24px;
+           } 
+            
+
+        </style>
+
+    </head>
+    <body>
+        <div class="header">
+
+          <div class="navbar">
+            <a href="playground_elementary.html">Home</a>
+            <div class="dropdown">
+              <button class="dropbtn">Practice! 
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="pitch_direction.html">Pitch Direction Trainer</a>
+                <a href="basicIntervals.html">Interval Drills</a>
+                <a href="rhythm_ID.html">Rhythm Randomizer</a>
+               <a href="rhythm_grid.html">Rhythm Grids</a>
+               <a href="musicalmath.html">Music Math Mash-up</a>
+               <a href="pitch_dictation.html">Tone Machine</a>
+               <a href="rhythm_dictation.html">Rhythm Machine</a>
+               <a href="melodic_dictation.html">Melody Machine</a>
+              </div>
+            </div> 
+            <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>
+            <a href="aboutpage.html">About</a>
+            <a href="feedback.html">Feedback</a>
+          </div>
+
+              <h1>
+                <span style="color: rgb(187, 120, 250); font-size: 36px;">&#9835</span> Sound Playground: Elementary Edition <span style="color: rgb(187, 120, 250); font-size: 36px;">&#9835</span>
+             
+         </h1>
+
+            <h2>
+              Welcome to Rhythm Randomizer: a beat value training page! 
+            </h2>
+
+        </div>
+
+        
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your practice mode (time signature) in the menu and press "Generate".
+       <br>
+       <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: You will be shown a random rhythm. Based on your meter, you must decide its value. 
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Select the correct identifiers in the three answer menus, then press "Submit".
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Check your result and keep practicing!
+
+        <br><br>
+        
+        Select your meter mode: <select id= "mode">
+          <option value = 1>Time Signatures over 4 (2/4, 3/4, 4/4 etc.)</option> 
+          <option value = 2>Time Signatures over 8 (6/8, 9/8, 12/8 etc.)</option>
+        </select>
+
+        <button id = "exercise" onclick="generateQuestion()">Generate!</button>
+
+        <br>
+        <div id = "generatedExercise" style = "height: 150px;"></div>
+
+        
+        <div id = "rhythms" style = "visibility: hidden;">
+          Construct the name of the rhythm and its beat value:<br>
+          <select id="answerChoice1">
+            <option value="dotted whole">dotted whole</option>
+            <option value="whole">whole</option>
+            <option value="dotted half">dotted half</option> <!--keep for 2-->
+            <option value="half">half</option>
+            <option value="dotted quarter">dotted quarter</option>
+            <option value="quarter">quarter</option>
+            <option value="three eighth">three eighth</option>
+            <option value="pair of eighth">pair of eighth</option>
+            <option value="dotted eighth">dotted eighth</option>
+            <option value="single eighth">single eighth</option>
+            <option value="six sixteenth">six sixteenth</option>
+            <option value="four sixteenth">four sixteenth</option>
+            <option value="pair of sixteenth">pair of sixteenth</option>
+            <option value="single sixteenth">single sixteenth</option>
+
+          </select>
+          
+          <select id="answerChoice2">
+            <option value="note">note(s)</option>
+            <option value="rest">rest(s)</option>
+           
+          </select>
+
+          <select id="answerChoice3">
+            <option value="1/4 of a beat">1/4 of a beat</option>
+            <option value="1/2 of a beat">1/2 of a beat</option>
+            <option value="3/4 of a beat">3/4 of a beat</option>
+            <option value="1 beat">1 beat</option>
+            <option value="1 and 1/2 beats">1 and 1/2 beats</option>
+            <option value="2 beats">2 beats</option>
+            <option value="3 beats">3 beats</option>
+            <option value="4 beats">4 beats</option>
+            <option value="6 beats">6 beats</option>
+            <option value="12 beats">12 beats</option>
+          </select>
+
+
+        </div>
+        <br>
+
+          <button id = "submit" style = "visibility: hidden;">Submit</button>
+          <br><br>
+
+
+        <div id="result" style = "visibility:hidden"></div>
+        <br>
+        <button id = "samemode" style = "visibility:hidden">New exercise: same mode</button> &nbsp; &nbsp;
+        <button id = "new" style = "visibility:hidden">New exercise: new mode</button>
+
+        
+        <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
+        <script text="text/javascript" src="randomizer.js"></script>
+        <script text="text/javascript" src="answer.js"></script> 
+
+    </body>
+
+</html>

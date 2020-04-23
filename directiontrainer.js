@@ -4,7 +4,7 @@ window.onload = function() {
     var notesArray = dictation[0];
     var ans = dictation[1];
     var page = 1;
-    practice(notesArray, ans, false, 0);
+    practice3(notesArray, ans, false, 0);
 
     }
 

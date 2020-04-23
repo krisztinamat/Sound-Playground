@@ -24,7 +24,7 @@ function getAns(ans, selectedLevelPitch, selectedLevelRhythm){
     res.style.visibility = "visible";
 
     if(localStorage.getItem("selection3") === ans){
-        res.innerHTML = "Correct! Nice job!";
+        res.innerHTML = "Correct! \u266B";
   
     }
 

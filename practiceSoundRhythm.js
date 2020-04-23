@@ -22,7 +22,7 @@ function getAns(ans, selectedLevel){
     res.style.visibility = "visible";
 
     if(localStorage.getItem("selection") === ans){
-        res.innerHTML = "Correct! Nice job!";
+        res.innerHTML = "Correct! \u266B";
     }
 
     else{

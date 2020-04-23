@@ -1,9 +1,10 @@
 window.onload = function(){
     //localStorage.clear();
     //console.log(localStorage);
-    if(localStorage.getItem("mode") != null){
-        var mode = localStorage.getItem("mode");
-        if(mode === "rhythm"){
+
+    if(localStorage.getItem("timeSig2") != null){
+        var mode = localStorage.getItem("timeSig2");
+        if(mode === "2"){
             var type = document.getElementById("mode");
             type.value = 2;
             type.disabled = "disabled";
@@ -18,11 +19,9 @@ window.onload = function(){
     }
 }
 
+
 function generateQuestion(type){
-    var btn = document.getElementById("exercise");
-    exercise.disabled = true;
-    var submit = document.getElementById("submit");
-    submit.style.visibility = "visible";
+  
     if(type == null){
     var mode = document.getElementById("mode");
     mode.disabled = "disabled";
@@ -30,18 +29,19 @@ function generateQuestion(type){
     }
 
     if(type == 1){
-        var menu = document.getElementById("notes");
-        menu.style.visibility = "visible";
-        note("note");
+        
+        rhythm(1);
     }
     else{
-        var menu = document.getElementById("rhythms");
-        menu.style.visibility = "visible";
-        rhythm("rhythm");
+        
+        rhythm(2);
     }
 }
 
 function rhythm(rhythm){
+var exercise = document.getElementById("exercise");
+exercise.disabled = true;
+
 var VF = Vex.Flow;
 var div = document.getElementById("generatedExercise");
 var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -57,116 +57,138 @@ stave.setContext(context).draw();
 var rhythmBank = new Map(); //key is a rhythm, value is beat total
 
 var ans = ["", ""];
+var rhythmArr = [];
 
-rhythmBank.set("whole note", ["4 beats", "w"] );
-rhythmBank.set("whole rest", ["4 beats", "wr"] );
-rhythmBank.set("dotted half note",["3 beats", "h"] );
-rhythmBank.set("half note", ["2 beats", "h"]);
-rhythmBank.set("half rest", ["2 beats", "hr"]);
-rhythmBank.set("quarter note", ["1 beat", "q"]);
-rhythmBank.set("quarter rest", ["1 beat", "qr"]);
-rhythmBank.set("eighth note", ["1/2 of a beat", "8"]);
-rhythmBank.set("eighth rest", ["1/2 of a beat", "8r"]);
-rhythmBank.set("dotted quarter note", ["1 and 1/2 beats", "q"]);
-rhythmBank.set("sixteenth note", ["1/4 of a beat", "16"]);
-rhythmBank.set("sixteenth rest", ["1/4 of a beat", "16r"]);
-rhythmBank.set("dotted eighth note", ["3/4 of a beat", "8"]);
-rhythmBank.set("sixteenth note pair", ["1/2 of a beat", "16"]);
-rhythmBank.set("eighth note pair", ["1 beat", "8"]);
-rhythmBank.set("four sixteenth notes", ["1 beat", "16"]);
+if(rhythm == 1){
+rhythmBank.set("whole note", ["4 beats", "w", "whole","note(s)"] );
+rhythmBank.set("whole rest", ["4 beats", "wr", "whole", "rest(s)"] );
+rhythmBank.set("dotted half note",["3 beats", "h", "dotted half", "note(s)"] );
+rhythmBank.set("dotted half rest",["3 beats", "hr", "dotted half", "rest(s)"] );
+rhythmBank.set("half note", ["2 beats", "h", "half", "note(s)"]);
+rhythmBank.set("half rest", ["2 beats", "hr", "half", "rest(s)"]);
+rhythmBank.set("quarter note", ["1 beat", "q", "quarter", "note(s)"]);
+rhythmBank.set("quarter rest", ["1 beat", "qr", "quarter", "rest(s)"]);
+rhythmBank.set("eighth note", ["1/2 of a beat", "8", "single eighth", "note(s)"]);
+rhythmBank.set("eighth rest", ["1/2 of a beat", "8r", "single eighth", "rest(s)"]);
+rhythmBank.set("dotted quarter note", ["1 and 1/2 beats", "q", "dotted quarter","note(s)"]);
+rhythmBank.set("sixteenth note", ["1/4 of a beat", "16", "single sixteenth", "note(s)"]);
+rhythmBank.set("sixteenth rest", ["1/4 of a beat", "16r", "single sixteenth", "rest(s)"]);
+rhythmBank.set("dotted eighth note", ["3/4 of a beat", "8", "dotted eighth", "note(s)"]);
+rhythmBank.set("sixteenth note pair", ["1/2 of a beat", "16", "pair of sixteenth", "note(s)"]);
+rhythmBank.set("eighth note pair", ["1 beat", "8", "pair of eighth", "note(s)"]);
+rhythmBank.set("four sixteenth notes", ["1 beat", "16", "four sixteenth", "note(s)"]);
 
 
 
-var rhythmArr = ["quarter note", "quarter rest", "half note", "half rest", "whole note","whole rest", "dotted half note", "eighth note pair", "dotted quarter note", "eighth note",
-"eighth rest", "four sixteenth notes", "sixteenth note pair", "dotted eighth note", "sixteenth note", "sixteenth rest"];
+rhythmArr = ["quarter note", "quarter rest", "half note", "half rest", 
+"whole note","whole rest", "dotted half note", "dotted half rest", 
+"eighth note pair", "dotted quarter note", "eighth note",
+"eighth rest", "four sixteenth notes", "sixteenth note pair", "dotted eighth note", 
+"sixteenth note", "sixteenth rest"];
+
+}
+else{
+rhythmBank.set("dotted whole note", ["12 beats", "w", "dotted whole", "note(s)"] );
+rhythmBank.set("dotted whole rest", ["12 beats", "wr", "dotted whole", "rest(s)"] );
+rhythmBank.set("dotted half note",["6 beats", "h", "dotted half", "note(s)"] );
+rhythmBank.set("dotted half rest",["6 beats", "hr", "dotted half", "rest(s)"] );
+rhythmBank.set("dotted quarter note", ["3 beats", "q", "dotted quarter", "note(s)"]);
+rhythmBank.set("dotted quarter rest", ["3 beats", "qr", "dotted quarter", "rest(s)"]);
+rhythmBank.set("quarter note", ["2 beats", "q", "quarter", "note(s)"]);
+rhythmBank.set("quarter rest", ["2 beats", "qr", "quarter", "rest(s)"]);
+rhythmBank.set("eighth note", ["1 beat", "8", "single eighth", "note(s)"]);
+rhythmBank.set("eighth rest", ["1 beat", "8r", "single eighth", "rest(s)"]);
+rhythmBank.set("sixteenth note", ["1/2 of a beat", "16", "single sixteenth", "note(s)"]);
+rhythmBank.set("sixteenth rest", ["1/2 of a beat", "16r", "single sixteenth", "rest(s)"]);
+rhythmBank.set("three eighth notes", ["3 beats", "8", "three eighth", "note(s)"]);
+rhythmBank.set("six sixteenth notes", ["3 beats", "16", "six sixteenth", "note(s)"]);
+
+rhythmArr = ["quarter note", "quarter rest", "dotted half note", "dotted half rest", "dotted whole note",
+"dotted whole rest", "dotted quarter rest", "dotted quarter note", "eighth note",
+"eighth rest", "six sixteenth notes", "three eighth notes", "sixteenth note", "sixteenth rest"];
+}
+
+
+var div = document.getElementById("rhythms");
+div.style.visibility = "visible";
 
 var randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
 var info = rhythmBank.get(randomElement);
 
-ans[0] = randomElement;
-ans[1] = info[0];
+ans[0] = info[2];
+ans[1] = info[3];
+ans[2] = info[0];
 
 var duration = info[1];
 
 var notes = [];
+var beams = [];
 
 if(randomElement === "whole rest"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["d/5"], duration: duration }));
 }
+else if(randomElement == "dotted whole rest"){
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["d/5"], duration: duration }).addDot(0)); 
+}
 else if(randomElement === "half rest" || randomElement === "quarter rest" || randomElement === "eighth rest" || randomElement === "sixteenth rest"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: duration }));
 }
+else if(randomElement === "dotted half rest" || randomElement === "dotted quarter rest"){
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: duration }).addDot(0));
+}
 
-else if(randomElement === "dotted half note" || randomElement === "dotted quarter note" || randomElement === "dotted eighth note"){
+else if(randomElement === "dotted whole note" || randomElement === "dotted half note" || randomElement === "dotted quarter note" || randomElement === "dotted eighth note"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
 }
 else if(randomElement === "eighth note pair" || randomElement === "sixteenth note pair"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    beams = VF.Beam.generateBeams(notes);
 }
 else if(randomElement === "four sixteenth notes"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    beams = VF.Beam.generateBeams(notes);
 
+}
+else if(randomElement === "six sixteenth notes"){
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    beams = VF.Beam.generateBeams(notes, {
+        groups: [new Vex.Flow.Fraction(3, 8)]
+      });
+
+}
+else if(randomElement === "three eighth notes"){
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
+    beams = VF.Beam.generateBeams(notes, {
+        groups: [new Vex.Flow.Fraction(3, 8)]
+      });
 }
 else{
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
 }
 
-var beams = VF.Beam.generateBeams(notes);
 Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
 beams.forEach(function(b) {b.setContext(context).draw()})
 
-var submit = document.getElementById("submit");
 
-submit.addEventListener("click", function(){getAns2(ans, rhythm)} );
+var submit = document.getElementById("submit");
+submit.style.visibility = "visible";
+
+
+submit.addEventListener("click", function(){getAnswer(ans, rhythm)} );
 
 }
 
-function note(note){
-
-var VF = Vex.Flow;
-var div = document.getElementById("generatedExercise");
-var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-
-renderer.resize(300, 150);
-var context = renderer.getContext();
-
-var stave = new VF.Stave(10, 20, 200);
-stave.addClef("treble");
-stave.setContext(context).draw();
-
-
-var noteBank = ["e/3", "f/3", "g/3", "a/3", "b/3", "c/4", "d/4", "e/4", "f/4", "g/4", "a/4", "b/4", "c/5", "d/5",
-                "e/5", "f/5", "g/5", "a/5", "b/5", "c/6"]; 
-
-var ans = "";
-
-var randomElement = noteBank[Math.floor(Math.random() * noteBank.length)];
-
-ans = randomElement.substring(0,1).toUpperCase();
-
-var notes = [new VF.StaveNote({clef: "treble", keys: [randomElement], duration: "w" })];
-
-    var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-     voice.setStrict(false);
-     voice.addTickables(notes);
-     
-     // Format and justify the notes to 400 pixels.
-     var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 300); //400 adjusts the spacing between notes, and elements
-     
-     // Render voice
-     voice.draw(context, stave);
-
-
-var submit = document.getElementById("submit");
-
-submit.addEventListener("click", function(){getAns(ans)} );
-
-
-}
 
 
 

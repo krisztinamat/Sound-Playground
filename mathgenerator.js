@@ -751,7 +751,7 @@ var generateNew = document.getElementById("new");
 res.style.visibility = "visible";
 
 if(input == ans){
-    res.innerHTML = "Correct! Nice job!";
+    res.innerHTML = "Correct! \u266B";
     
 }
 
@@ -802,7 +802,7 @@ generateNew.style.visibility = "visible";
         res.style.visibility = "visible";
 
     if(ans === value){
-        res.innerHTML = "Correct! Nice job!";
+        res.innerHTML = "Correct! \u266B";
     }
 
     else{
