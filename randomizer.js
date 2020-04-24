@@ -4,7 +4,13 @@ window.onload = function(){
 
     if(localStorage.getItem("timeSig2") != null){
         var mode = localStorage.getItem("timeSig2");
-        if(mode === "2"){
+        if(mode === "3"){
+            var type = document.getElementById("mode");
+            type.value = 3;
+            type.disabled = "disabled";
+            this.generateQuestion(3);  
+        }
+        else if(mode === "2"){
             var type = document.getElementById("mode");
             type.value = 2;
             type.disabled = "disabled";
@@ -31,6 +37,9 @@ function generateQuestion(type){
     if(type == 1){
         
         rhythm(1);
+    }
+    else if(type == 3){
+        rhythm(3);
     }
     else{
         
@@ -87,7 +96,7 @@ rhythmArr = ["quarter note", "quarter rest", "half note", "half rest",
 "sixteenth note", "sixteenth rest"];
 
 }
-else{
+else if (rhythm == 2){
 rhythmBank.set("dotted whole note", ["12 beats", "w", "dotted whole", "note(s)"] );
 rhythmBank.set("dotted whole rest", ["12 beats", "wr", "dotted whole", "rest(s)"] );
 rhythmBank.set("dotted half note",["6 beats", "h", "dotted half", "note(s)"] );
@@ -107,7 +116,29 @@ rhythmArr = ["quarter note", "quarter rest", "dotted half note", "dotted half re
 "dotted whole rest", "dotted quarter rest", "dotted quarter note", "eighth note",
 "eighth rest", "six sixteenth notes", "three eighth notes", "sixteenth note", "sixteenth rest"];
 }
+else{
+    rhythmBank.set("whole note", ["2 beats", "w", "whole","note(s)"] );
+    rhythmBank.set("whole rest", ["2 beats", "wr", "whole", "rest(s)"] );
+    rhythmBank.set("dotted half note",["1 and 1/2 beats", "h", "dotted half", "note(s)"] );
+    rhythmBank.set("dotted half rest",["1 and 1/2 beats", "hr", "dotted half", "rest(s)"] );
+    rhythmBank.set("half note",["1 beat", "h", "half", "note(s)"] );
+    rhythmBank.set("half rest",["1 beat", "hr", "half", "rest(s)"] );
+    rhythmBank.set("dotted quarter note", ["3/4 of a beat", "q", "dotted quarter", "note(s)"]);
+    rhythmBank.set("dotted quarter rest", ["3/4 of a beat", "qr", "dotted quarter", "rest(s)"]);
+    rhythmBank.set("quarter note", ["1/2 of a beat", "q", "quarter", "note(s)"]);
+    rhythmBank.set("quarter rest", ["1/2 of a beat", "qr", "quarter", "rest(s)"]);
+    rhythmBank.set("eighth note", ["1/4 of a beat", "8", "single eighth", "note(s)"]);
+    rhythmBank.set("eighth rest", ["1/4 of a beat", "8r", "single eighth", "rest(s)"]);
+    rhythmBank.set("sixteenth note pair", ["1/4 of a beat", "16", "pair of sixteenth", "note(s)"]);
+    rhythmBank.set("eighth note pair", ["1/2 of a beat", "8", "pair of eighth", "note(s)"]);
+    rhythmBank.set("four sixteenth notes", ["1/2 of a beat", "16", "four sixteenth", "note(s)"]);
+  
+    rhythmArr = ["quarter note", "quarter rest", "half note", "half rest", 
+    "whole note","whole rest", "dotted half note", "dotted half rest", 
+    "eighth note pair", "dotted quarter note", "dotted quarter rest", "eighth note",
+    "eighth rest", "four sixteenth notes", "sixteenth note pair", ]; 
 
+}
 
 var div = document.getElementById("rhythms");
 div.style.visibility = "visible";
