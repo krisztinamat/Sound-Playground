@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+        <link rel="stylesheet" type="text/css" href="style2.css">
+
+    <head>
+        <title>Little Ear Trainer</title>
+        <style>
+           h1{
+               font-size: 36px;
+           }
+           h2{
+               font-size: 24px;
+           } 
+            
+
+        </style>
+
+    </head>
+    <body>
+        <div class="header">
+    
+
+              <h1>
+                <span style="color: rgb(187, 120, 250); font-size: 36px;">&#9835</span> Little Ear Trainer: Interval Harmony <span style="color: rgb(187, 120, 250); font-size: 36px;">&#9835</span>
+             
+         </h1>
+
+            <h2>
+              Welcome to Little Ear Trainer: Interval Harmony!
+            </h2>
+        </div>
+
+       
+
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 0: Need a refresher (or a break)? <a href="lilEarTrainer_direction.html">Click here</a> to check out Little Ear Trainer: Pitch Direction trainer. <a href="lilEarTrainer_intervals.html">Click here</a> to check out Little Ear Trainer: Basic Interval page (no harmony).
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your level and press "Generate!" Your exercise will appear below.
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Click the "Listen" button. You will hear two notes at the SAME time.
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Decide which interval (space between the notes) you heard. Then choose your answer and press the "Submit" button.
+        <br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Check your result and keep practicing!
+        
+
+        <br><br>
+
+
+        <select id= "level">
+            <option value = 1>Level One: same notes, intervals of seconds and thirds</option> <!-- same, seconds or thirds in a major key-->
+            <option value = 2>Level Two: same notes, intervals of seconds, thirds, and fourths</option> <!--same, seconds, thirds, fourths in a major key -->
+            <option value = 3>Level Three: same notes, intervals of seconds, thirds, fourths, fifths</option> <!--same, seconds, thirds, fourths, fifths in a major key -->
+            <option value = 4>Level Four: same notes, intervals of seconds, thirds, fourths, fifths, sixths</option> <!--same, seconds, thirds, fourths, fifths in a major key -->
+            <option value = 5>Level Five: all intervals up through an octave</option> <!--same, seconds, thirds, fourths, fifths in a major key -->
+
+        </select>
+
+        <button id = "exercise" onclick="generateQuestion()">Generate!</button>
+
+
+        <br><br>
+        <div id= "question" style= "visibility: hidden">
+        
+        
+            <button id = "listen2">Listen</button>
+
+            <select id="answerChoice">
+              <option value="same" style = "visibility: hidden;">Same note</option>
+              <option value="second" style = "visibility: hidden;">Second (do-re or re-do)</option>
+              <option value="third" style = "visibility: hidden;">Third (do-mi or mi-do)</option>
+              <option value="fourth" style = "visibility: hidden;">Fourth (do-fa or fa-do)</option>
+              <option value="fifth" style = "visibility: hidden;">Fifth (do-sol or sol-do)</option>
+              <option value="sixth" style = "visibility: hidden;">Sixth (do-la or la-do)</option>
+              <option value="seventh" style = "visibility: hidden;">Seventh (do-ti or ti-do)</option>
+              <option value="octave" style = "visibility: hidden;">Octave (do-do)</option>
+            </select>
+    
+            
+            <button id = "submit2">Submit</button>
+            <br><br>
+        
+        </div>
+
+
+        <div id="result" style = "visibility:hidden"></div>
+        <br>
+        <button id = "sameintval" style = "visibility:hidden">New exercise: same level</button> &nbsp; &nbsp;
+        <button id = "new" style = "visibility:hidden">New exercise: new level</button>
+        
+
+        
+        <script src = 'https://cdnjs.cloudflare.com/ajax/libs/tone/14.6.0/Tone.js'></script>
+        <script text="text/javascript" src="harmony.js"></script>
+        <script text="text/javascript" src="practiceSound2.js"></script>
+     
+
+
+
+    </body>
+
+</html>

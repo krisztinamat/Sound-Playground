@@ -22,6 +22,15 @@ function practice3(notesArray, ans){
     submit.addEventListener("click", function(){getAns3(ans)} );
 
 }
+
+function practice4(notesArray, ans, level){
+    var listen = document.getElementById("listen2");
+    var submit = document.getElementById("submit2");
+    
+    listen.addEventListener("click", function(){getSound2(notesArray, listen, submit)});
+    submit.addEventListener("click", function(){getAnswer2(ans, level)} );
+}
+
 function getAns3(ans){
     var category = document.getElementById("answerChoice");
     category.disabled = "disabled";
@@ -116,6 +125,39 @@ function getAns(ans, selectedCategory, note){
     
 }
 
+function getAnswer2(ans, level){
+    var category = document.getElementById("answerChoice");
+    category.disabled = "disabled";
+    var selectedCategory = category.options[category.selectedIndex].text;
+
+    var res = document.getElementById("result");
+    var generateNew = document.getElementById("new");
+    var samelvl= document.getElementById("sameintval");
+    res.style.visibility = "visible";
+
+    if(selectedCategory === ans){
+        res.innerHTML = "Correct! \u266B";
+
+    }
+
+    else{
+        res.innerHTML = "Not quite! The answer was: " + ans;
+  
+    }
+
+    
+        samelvl.style.visibility = "visible";
+        samelvl.addEventListener("click", function(){
+        localStorage.setItem("intval3a", level+"");
+        window.location.reload()});
+    
+        generateNew.style.visibility = "visible";
+        generateNew.addEventListener("click", function(){localStorage.removeItem("intval3a");
+            window.location.reload()}); 
+}
+
+
+
 function getAns2(ans, rhythm){
     var category1 = document.getElementById("answerChoice1");
     category1.disabled = "disabled";
@@ -181,3 +223,30 @@ function getSound1(notesArray, btn, btn2){
     }, 2000)
     
     }
+
+    function getSound2(notesArray, btn, btn2){
+        btn.disabled=true;
+        btn2.disabled = true;
+        
+        Tone.Transport.bpm.value = 120;
+        
+        var toneArray = [];
+        
+        for(i = 0; i<notesArray.length; i++){
+            var tone = notesArray[i];
+            toneArray[i] = tone;
+        }
+        
+        
+        var poly = new Tone.PolySynth();
+        
+        poly.toMaster();
+
+        poly.triggerAttackRelease([toneArray[0], toneArray[1]], "4n."); 
+        
+        setTimeout(function(){
+            btn.removeAttribute('disabled');
+            btn2.removeAttribute('disabled');
+        }, 2000)
+        
+        }
