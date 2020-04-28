@@ -1,8 +1,16 @@
 window.onload = function(){
-    //localStorage.clear();
-    //console.log(localStorage);
-    if(localStorage.getItem("lvlmath") != null){
-        this.generateQuestion(Number(localStorage.getItem("lvlmath")));
+    sessionStorage.removeItem("lvlpitch");
+    sessionStorage.removeItem("lvlrhythm");
+    sessionStorage.removeItem("timeSig2");
+    sessionStorage.removeItem("lvlriddim");
+    sessionStorage.removeItem("lvl");
+    sessionStorage.removeItem("intval");
+    sessionStorage.removeItem("intval3a");
+    sessionStorage.removeItem("lvlmelody");
+    sessionStorage.removeItem("lvlharmony");
+
+    if(sessionStorage.getItem("lvlmath") != null){
+        this.generateQuestion(Number(sessionStorage.getItem("lvlmath")));
     }
 }
 
@@ -11,7 +19,7 @@ function generateQuestion(lvlmath){
     btn.disabled = true;
 
     var chk = document.getElementById("bonus");
-    if(localStorage.getItem("checked") != null){
+    if(sessionStorage.getItem("checked") != null){
         chk.checked = true;
     }
     chk.disabled = true;
@@ -764,13 +772,13 @@ generateNew.style.visibility = "visible";
     samemode.style.visibility = "visible"; 
     samemode.addEventListener("click", function(){
     if(boolean){
-        localStorage.setItem("checked", "yes");
+        sessionStorage.setItem("checked", "yes");
     }
-    localStorage.setItem("lvlmath", level+"");
-    //alert(localStorage);
+    sessionStorage.setItem("lvlmath", level+"");
+    //alert(sessionStorage);
     window.location.reload()});
-    generateNew.addEventListener("click", function(){localStorage.removeItem("lvlmath");
-    localStorage.removeItem("checked");
+    generateNew.addEventListener("click", function(){sessionStorage.removeItem("lvlmath");
+    sessionStorage.removeItem("checked");
         window.location.reload()});
 
 
@@ -813,13 +821,13 @@ generateNew.style.visibility = "visible";
         samemode.style.visibility = "visible"; 
         samemode.addEventListener("click", function(){
             if(boolean){
-                localStorage.setItem("checked", "yes");
+                sessionStorage.setItem("checked", "yes");
             }
-        localStorage.setItem("lvlmath", level+"");
-        //alert(localStorage);
+        sessionStorage.setItem("lvlmath", level+"");
+        //alert(sessionStorage);
         window.location.reload()});
-        generateNew.addEventListener("click", function(){localStorage.removeItem("lvlmath");
-        localStorage.removeItem("checked");
+        generateNew.addEventListener("click", function(){sessionStorage.removeItem("lvlmath");
+        sessionStorage.removeItem("checked");
             window.location.reload()});
 
     }

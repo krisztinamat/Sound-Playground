@@ -1,8 +1,17 @@
 window.onload = function(){
-    //localStorage.clear();
-    //console.log(localStorage);
-    if(localStorage.getItem("lvl") != null){
-        this.generateQuestion(Number(localStorage.getItem("lvl")));
+    sessionStorage.removeItem("lvlpitch");
+    sessionStorage.removeItem("lvlrhythm");
+    sessionStorage.removeItem("timeSig2");
+    sessionStorage.removeItem("checked");
+    sessionStorage.removeItem("lvlmath");
+    sessionStorage.removeItem("lvlriddim");
+    sessionStorage.removeItem("intval");
+    sessionStorage.removeItem("intval3a");
+    sessionStorage.removeItem("lvlmelody");
+    sessionStorage.removeItem("lvlharmony");
+
+    if(sessionStorage.getItem("lvl") != null){
+        this.generateQuestion(Number(sessionStorage.getItem("lvl")));
     }
 }
 
@@ -26,7 +35,7 @@ function highlight(div){
     if(div === 'C'){
         c.style.backgroundColor = "rgb(222, 221, 250)";  
     }
-    localStorage.setItem("selection", div);
+    sessionStorage.setItem("selection", div);
     
 }
 

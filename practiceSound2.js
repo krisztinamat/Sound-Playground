@@ -85,12 +85,12 @@ function getAns0(ans, boolean, level){
         var sameintval = document.getElementById("sameintval");
         sameintval.style.visibility = "visible"; 
         sameintval.addEventListener("click", function(){
-        localStorage.setItem("intval", level+"");
-        //alert(localStorage);
+        sessionStorage.setItem("intval", level+"");
+        //alert(sessionStorage);
         window.location.reload()});
 
         generateNew.style.visibility = "visible";
-        generateNew.addEventListener("click", function(){localStorage.removeItem("intval");
+        generateNew.addEventListener("click", function(){sessionStorage.removeItem("intval");
             window.location.reload()}); 
 
     }
@@ -117,10 +117,10 @@ function getAns(ans, selectedCategory, note){
     var samemode = document.getElementById("samemode");
     samemode.style.visibility = "visible"; 
     samemode.addEventListener("click", function(){
-    localStorage.setItem("mode", note);
-    //alert(localStorage);
+    sessionStorage.setItem("mode", note);
+    //alert(sessionStorage);
     window.location.reload()});
-    generateNew.addEventListener("click", function(){localStorage.clear();
+    generateNew.addEventListener("click", function(){sessionStorage.clear();
         window.location.reload()});         
     
 }
@@ -148,11 +148,11 @@ function getAnswer2(ans, level){
     
         samelvl.style.visibility = "visible";
         samelvl.addEventListener("click", function(){
-        localStorage.setItem("intval3a", level+"");
+        sessionStorage.setItem("intval3a", level+"");
         window.location.reload()});
     
         generateNew.style.visibility = "visible";
-        generateNew.addEventListener("click", function(){localStorage.removeItem("intval3a");
+        generateNew.addEventListener("click", function(){sessionStorage.removeItem("intval3a");
             window.location.reload()}); 
 }
 
@@ -187,10 +187,10 @@ function getAns2(ans, rhythm){
     var samemode = document.getElementById("samemode");
     samemode.style.visibility = "visible"; 
     samemode.addEventListener("click", function(){
-    localStorage.setItem("mode", rhythm);
-    //alert(localStorage);
+    sessionStorage.setItem("mode", rhythm);
+    //alert(sessionStorage);
     window.location.reload()});
-    generateNew.addEventListener("click", function(){localStorage.clear();
+    generateNew.addEventListener("click", function(){sessionStorage.clear();
         window.location.reload()});        
     
 

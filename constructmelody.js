@@ -1,8 +1,16 @@
 window.onload = function(){
-    //localStorage.clear();
-    //console.log(localStorage);
-    if(localStorage.getItem("lvlpitch") != null && localStorage.getItem("lvlrhythm")!=null){
-        this.generateQuestion(Number(localStorage.getItem("lvlpitch")), Number(localStorage.getItem("lvlrhythm")));
+    sessionStorage.removeItem("timeSig2");
+    sessionStorage.removeItem("checked");
+    sessionStorage.removeItem("lvlmath");
+    sessionStorage.removeItem("lvlriddim");
+    sessionStorage.removeItem("lvl");
+    sessionStorage.removeItem("intval");
+    sessionStorage.removeItem("intval3a");
+    sessionStorage.removeItem("lvlmelody");
+    sessionStorage.removeItem("lvlharmony");
+    
+    if(sessionStorage.getItem("lvlpitch") != null && sessionStorage.getItem("lvlrhythm")!=null){
+        this.generateQuestion(Number(sessionStorage.getItem("lvlpitch")), Number(sessionStorage.getItem("lvlrhythm")));
     }
     else{
         window.scrollTo({ top: 0});
@@ -34,7 +42,7 @@ function highlight(div){
     if(div === 'D'){
         d.style.backgroundColor = "rgb(222, 221, 250)";  
     }
-    localStorage.setItem("selection3", div);
+    sessionStorage.setItem("selection", div);
     
 }
 

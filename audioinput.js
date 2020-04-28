@@ -23,7 +23,7 @@ function getAns(ans, selectedLevelPitch, selectedLevelRhythm){
     var generateNew = document.getElementById("new");
     res.style.visibility = "visible";
 
-    if(localStorage.getItem("selection3") === ans){
+    if(sessionStorage.getItem("selection") === ans){
         res.innerHTML = "Correct! \u266B";
   
     }
@@ -35,19 +35,19 @@ function getAns(ans, selectedLevelPitch, selectedLevelRhythm){
     var samelvl = document.getElementById("samelvl");
     samelvl.style.visibility = "visible"; 
     samelvl.addEventListener("click", function(){
-    localStorage.setItem("lvlpitch", selectedLevelPitch+"");
-    localStorage.setItem("lvlrhythm", selectedLevelRhythm+"");
+    sessionStorage.setItem("lvlpitch", selectedLevelPitch+"");
+    sessionStorage.setItem("lvlrhythm", selectedLevelRhythm+"");
    
-    localStorage.removeItem("selection3");
-    //alert(localStorage);
+    sessionStorage.removeItem("selection");
+    //alertsessionStorage);
     window.location.reload()});
     
     generateNew.style.visibility = "visible";  
     generateNew.addEventListener("click", function(){
-       /* localStorage.removeItem("lvlpitch");
-        localStorage.removeItem("lvlrhythm");
-        localStorage.removeItem("selection3");*/
-        localStorage.clear();
+       /*sessionStorage.removeItem("lvlpitch");
+    sessionStorage.removeItem("lvlrhythm");
+    sessionStorage.removeItem("selection");*/
+    sessionStorage.clear();
         location = location;
     });        
     

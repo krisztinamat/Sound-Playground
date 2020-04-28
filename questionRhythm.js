@@ -1,9 +1,17 @@
 window.onload = function(){
-    //load_();
-    //localStorage.clear();
-    //console.log(localStorage);
-    if(localStorage.getItem("lvlriddim") != null){
-        this.generateQuestion(Number(localStorage.getItem("lvlriddim")));
+    sessionStorage.removeItem("lvlpitch");
+    sessionStorage.removeItem("lvlrhythm");
+    sessionStorage.removeItem("timeSig2");
+    sessionStorage.removeItem("checked");
+    sessionStorage.removeItem("lvlmath");
+    sessionStorage.removeItem("lvl");
+    sessionStorage.removeItem("intval");
+    sessionStorage.removeItem("intval3a");
+    sessionStorage.removeItem("lvlmelody");
+    sessionStorage.removeItem("lvlharmony");
+
+    if(sessionStorage.getItem("lvlriddim") != null){
+        this.generateQuestion(Number(sessionStorage.getItem("lvlriddim")));
     }
 }
 
@@ -27,7 +35,7 @@ function highlight(div){
     if(div === 'C'){
         c.style.backgroundColor = "rgb(222, 221, 250)";  
     }
-    localStorage.setItem("selection", div);
+    sessionStorage.setItem("selection", div);
     
 }
 

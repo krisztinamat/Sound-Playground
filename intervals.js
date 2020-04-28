@@ -1,8 +1,17 @@
 window.onload = function(){
-    //localStorage.clear();
-    //console.log(localStorage);
-    if(localStorage.getItem("intval") != null){
-        this.generateQuestion(Number(localStorage.getItem("intval")));
+    sessionStorage.removeItem("lvlpitch");
+    sessionStorage.removeItem("lvlrhythm");
+    sessionStorage.removeItem("timeSig2");
+    sessionStorage.removeItem("checked");
+    sessionStorage.removeItem("lvlmath");
+    sessionStorage.removeItem("lvlriddim");
+    sessionStorage.removeItem("lvl");
+    sessionStorage.removeItem("intval3a");
+    sessionStorage.removeItem("lvlmelody");
+    sessionStorage.removeItem("lvlharmony");
+
+    if(sessionStorage.getItem("intval") != null){
+        this.generateQuestion(Number(sessionStorage.getItem("intval")));
     }
 }
 

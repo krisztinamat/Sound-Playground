@@ -21,7 +21,7 @@ function getAns(ans, selectedLevel){
     var generateNew = document.getElementById("new");
     res.style.visibility = "visible";
 
-    if(localStorage.getItem("selection") === ans){
+    if(sessionStorage.getItem("selection") === ans){
         res.innerHTML = "Correct! \u266B";
     }
 
@@ -32,13 +32,13 @@ function getAns(ans, selectedLevel){
     var samelvl = document.getElementById("samelvl");
     samelvl.style.visibility = "visible"; 
     samelvl.addEventListener("click", function(){
-    localStorage.setItem("lvlriddim", selectedLevel+"");
-    //alert(localStorage);
+    sessionStorage.setItem("lvlriddim", selectedLevel+"");
+    //alert(sessionStorage);
     window.location.reload()});
     
     generateNew.style.visibility = "visible";  
     generateNew.addEventListener("click", function(){
-        localStorage.clear();
+        sessionStorage.clear();
         window.location.reload()});        
     
 }

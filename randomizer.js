@@ -1,9 +1,17 @@
 window.onload = function(){
-    //localStorage.clear();
-    //console.log(localStorage);
+    sessionStorage.removeItem("lvlpitch");
+    sessionStorage.removeItem("lvlrhythm");
+    sessionStorage.removeItem("checked");
+    sessionStorage.removeItem("lvlmath");
+    sessionStorage.removeItem("lvlriddim");
+    sessionStorage.removeItem("lvl");
+    sessionStorage.removeItem("intval");
+    sessionStorage.removeItem("intval3a");
+    sessionStorage.removeItem("lvlmelody");
+    sessionStorage.removeItem("lvlharmony");
 
-    if(localStorage.getItem("timeSig2") != null){
-        var mode = localStorage.getItem("timeSig2");
+    if(sessionStorage.getItem("timeSig2") != null){
+        var mode = sessionStorage.getItem("timeSig2");
         if(mode === "3"){
             var type = document.getElementById("mode");
             type.value = 3;

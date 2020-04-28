@@ -38,14 +38,15 @@ function getAnswer(ans, rhythm){
     generateNew.style.visibility = "visible";  
     var samemode = document.getElementById("samemode");
     samemode.style.visibility = "visible"; 
-    samemode.addEventListener("click", function(){
-    localStorage.setItem("timeSig2", rhythm);
-    //alert(localStorage);
+    samemode.addEventListener("click", function(){ 
+        sessionStorage.setItem("timeSig2", rhythm);
     window.location.reload()});
-    generateNew.addEventListener("click", function(){localStorage.removeItem("timeSig2");
+
+
+    generateNew.addEventListener("click", function(){
+        sessionStorage.removeItem("timeSig2");
         window.location.reload()});        
     
-
 }
 
 
