@@ -37,7 +37,7 @@
                    <a href="harmonic_dictation.html">Harmony Machine</a>
                   </div>
                 </div> 
-               <!-- <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>-->
+                <!-- <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>-->
                 <a href="aboutpage.html">About</a>
                 <a href="feedback.html">Feedback</a>
 
@@ -48,26 +48,37 @@
              
          </h1>
          <h2>
-          Welcome to the Tone Machine: for basic pitch dictation! 
+          Welcome to the Harmony Machine: two-part pitch dictation! 
         </h2>
         </div>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your level and press "Generate!" Your exercise will appear below.
+        Note: these exercises do not follow rules of good voice leading, rather they are for students to practice listening to independent parts.
+        <br><br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your levels for melody and harmony, then press "Generate!" Your exercise will appear below.
         <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Click the "Listen" button. You will hear four notes.
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Click the "Listen" button. You will hear two voices at the SAME time, each sounding 4 notes.
         <br>
         <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Click the box which contains the correct answer. It will be highlighted for you. 
         <br>
         <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Press the submit button to check your answer, and keep practicing! You can choose to continue with the same level, or generate from a new one.
 
         <br><br>
+       
 
 
-        <select id= "level">
-            <option value = 1>Level One: same notes and one step away</option> <!--  same or different notes-->
-            <option value = 2>Level Two: same notes, steps, and skips</option> <!-- same, seconds or thirds in a major key-->
-            <option value = 3>Level Three: up to a perfect fifth </option> <!--same, seconds, thirds, fourths in a major key -->
-            <option value = 4>Level Four: up to an octave </option> <!--same, seconds, thirds, fourths, fifths, sixths in a major key -->  
+        Melodic interval level:
+        <select id= "levelMelodic">
+            <option value = 1>Level One: unisons and seconds</option> <!--  same or different notes-->
+            <option value = 2>Level Two: unisons, seconds, thirds</option> <!-- same, seconds or thirds in a major key-->
+            <option value = 3>Level Three: up to a fifth </option> <!--same, seconds, thirds, fourths in a major key -->
+           <!-- <option value = 4>Level Four: up to an octave </option> same, seconds, thirds, fourths in a major key -->  
         </select>
+       <br><br>
+       Harmonic interval level:
+       <select id= "levelHarmonic">
+           <option value = 1>Level One: thirds and fourths</option> 
+           <option value = 2>Level Two: thirds, fourths, fifths, sixths</option> 
+           <option value = 3>Level Three: thirds through octaves</option>  
+       </select>
 
         <button id = "exercise" onclick="generateQuestion()">Generate!</button>
 
@@ -79,17 +90,17 @@
             <br><br>
 
                 <div id = "wrapper">
-                    <div id="A" style = "width: 370px; height: 160px;"onclick="highlight('A')">A: </div>
-                    &nbsp; &nbsp;
+                    <div id="A" style = "width: 370px; height: 200px;"onclick="highlight('A')">A: </div>
+                    &nbsp; &nbsp;&nbsp;
     
-                    <div id="B" style = "width: 370px; height: 160px;"onclick="highlight('B')">B:</div>
-                    &nbsp; &nbsp;
+                    <div id="B" style = "width: 370px; height: 200px;"onclick="highlight('B')">B:</div>
+                    &nbsp; &nbsp;&nbsp;
     
-                    <div id="C" style = "width: 370px; height: 160px;" onclick="highlight('C')">C:</div>
+                    <div id="C" style = "width: 370px; height: 200px;" onclick="highlight('C')">C:</div>
                 </div>
               
 
-            <br><br> <br><br>
+            <br><br> <br><br><br><br>
             <button id = "submit2">Submit</button>
             </div>
             <br><br>
@@ -105,7 +116,7 @@
         
         <script src = 'https://cdnjs.cloudflare.com/ajax/libs/tone/14.6.0/Tone.js'></script>
         <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
-        <script text="text/javascript" src="question.js"></script>
+        <script text="text/javascript" src="question2part.js"></script>
         <script text="text/javascript" src="practiceSound.js"></script>
 
     </body>
