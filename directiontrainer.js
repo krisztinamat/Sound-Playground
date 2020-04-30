@@ -11,6 +11,7 @@ window.onload = function() {
     sessionStorage.removeItem("intval3a");
     sessionStorage.removeItem("lvlmelody");
     sessionStorage.removeItem("lvlharmony");
+    sessionStorage.removeItem("selection");
 
     var dictation = generate();
     var notesArray = dictation[0];

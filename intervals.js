@@ -9,6 +9,7 @@ window.onload = function(){
     sessionStorage.removeItem("intval3a");
     sessionStorage.removeItem("lvlmelody");
     sessionStorage.removeItem("lvlharmony");
+    sessionStorage.removeItem("selection");
 
     if(sessionStorage.getItem("intval") != null){
         this.generateQuestion(Number(sessionStorage.getItem("intval")));

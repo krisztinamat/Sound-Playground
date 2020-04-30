@@ -8,6 +8,7 @@ window.onload = function(){
     sessionStorage.removeItem("intval3a");
     sessionStorage.removeItem("lvlmelody");
     sessionStorage.removeItem("lvlharmony");
+    sessionStorage.removeItem("selection");
     
     if(sessionStorage.getItem("lvlpitch") != null && sessionStorage.getItem("lvlrhythm")!=null){
         this.generateQuestion(Number(sessionStorage.getItem("lvlpitch")), Number(sessionStorage.getItem("lvlrhythm")));

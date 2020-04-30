@@ -9,6 +9,7 @@ window.onload = function(){
     sessionStorage.removeItem("intval3a");
     sessionStorage.removeItem("lvlmelody");
     sessionStorage.removeItem("lvlharmony");
+    sessionStorage.removeItem("selection");
 
     if(sessionStorage.getItem("timeSig2") != null){
         var mode = sessionStorage.getItem("timeSig2");

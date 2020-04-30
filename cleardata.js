@@ -11,5 +11,6 @@ window.onload = function() {
     sessionStorage.removeItem("intval3a");
     sessionStorage.removeItem("lvlmelody");
     sessionStorage.removeItem("lvlharmony");
+    sessionStorage.removeItem("selection");
 
     }
