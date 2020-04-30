@@ -1,4 +1,6 @@
 window.onload = function(){
+
+    sessionStorage.removeItem("selection");
     sessionStorage.removeItem("lvlpitch");
     sessionStorage.removeItem("lvlrhythm");
     sessionStorage.removeItem("timeSig2");
@@ -8,7 +10,7 @@ window.onload = function(){
     sessionStorage.removeItem("lvl");
     sessionStorage.removeItem("intval");
     sessionStorage.removeItem("intval3a");
-    sessionStorage.removeItem("selection");
+    
 
     if(sessionStorage.getItem("lvlmelody") != null && sessionStorage.getItem("lvlharmony") != null){
         this.generateQuestion(Number(sessionStorage.getItem("lvlmelody")), Number(sessionStorage.getItem("lvlharmony")));
@@ -176,15 +178,18 @@ function buildQuestion(melody, harmony){
             nextdirection = nextdirection * -1;
         } 
         var nextindex = (nextNote * nextdirection)+ position;
+        if(nextindex == 1 || nextindex === 0){
+            continue;
+        }
         nextNote = arrayPossible[nextindex];
 
         var interval = intervalH[Math.floor(Math.random()*intervalH.length)];
-
+  
        while(nextindex-interval < 0 || !(intervalArray.includes(Math.abs((nextindex-interval)-position2)))){
            //console.log(Math.abs((nextindex-interval)-position2));
            //console.log(intervalArray);
            interval = intervalH[Math.floor(Math.random()*intervalH.length)];
-           //console.log("hi");
+       
        } 
 
        var nextindex2 = (nextindex-interval);
@@ -225,15 +230,20 @@ function buildQuestion(melody, harmony){
             nextdirection = nextdirection * -1;
         } 
         var nextindex = (nextNote * nextdirection)+ position;
+        if(nextindex == 1 || nextindex === 0){
+            continue;
+        }
         nextNote = arrayPossible[nextindex];
 
         var interval = intervalH[Math.floor(Math.random()*intervalH.length)];
-
+        //console.log(incorrect1);
+        //var a = 0;
        while(nextindex-interval < 0 || !(intervalArray.includes(Math.abs((nextindex-interval)-position2)))){
            //console.log(Math.abs((nextindex-interval)-position2));
            //console.log(intervalArray);
            interval = intervalH[Math.floor(Math.random()*intervalH.length)];
-           //console.log("hi");
+
+         
        } 
 
        var nextindex2 = (nextindex-interval);
@@ -274,6 +284,9 @@ function buildQuestion(melody, harmony){
             nextdirection = nextdirection * -1;
         } 
         var nextindex = (nextNote * nextdirection)+ position;
+        if(nextindex == 1 || nextindex === 0){
+            continue;
+        }
         nextNote = arrayPossible[nextindex];
 
         var interval = intervalH[Math.floor(Math.random()*intervalH.length)];
@@ -282,7 +295,6 @@ function buildQuestion(melody, harmony){
            //console.log(Math.abs((nextindex-interval)-position2));
            //console.log(intervalArray);
            interval = intervalH[Math.floor(Math.random()*intervalH.length)];
-           //console.log("hi");
        } 
 
        var nextindex2 = (nextindex-interval);
