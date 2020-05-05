@@ -300,7 +300,7 @@ function evaluate (ans, submit){
 
   var mixedCharacters = "Ԁ";
   symbols.set(" ", " ");
-  symbols.set("whole note", "\u07CB"); 
+  symbols.set("whole note", "\u0B66"); 
   symbols.set("dotted half note", "\u147B");
   symbols.set("half note", "\u146F");
   symbols.set("dotted quarter note", "\u2669.");

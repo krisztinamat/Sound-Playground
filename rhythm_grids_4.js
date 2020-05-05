@@ -237,7 +237,7 @@ function evaluate (ans, submit){
   var symbols = new Map(); //1D15D
 
   symbols.set(" ", " ");
-  symbols.set("whole note", "\u07CB"); 
+  symbols.set("whole note", "\u0B66"); 
   symbols.set("dotted half note", "\u147B");
   symbols.set("half note", "\u146F");
   symbols.set("quarter note", "\u2669");

@@ -67,7 +67,7 @@ function lvl1(boolean){
     var mode = "4/4";
     var rhythmMap = ["whole note", "quarter note", "dotted half note", "half note" ];
     var symbols = new Map();
-    symbols.set("whole note", [4, "\u07CB"]);
+    symbols.set("whole note", [4, "\u0B66"]);
     symbols.set("dotted half note", [3, "\u147B"]);
     symbols.set("half note", [2, "\u146F"]);
     symbols.set("quarter note", [1, "\u2669"]);
@@ -235,7 +235,7 @@ function lvl2(boolean){
     var mode = "4/4";
     var rhythmMap = ["whole note", "quarter note", "dotted half note", "half note" ];
     var symbols = new Map();
-    symbols.set("whole note", [4, "\u07CB"]);
+    symbols.set("whole note", [4, "\u0B66"]);
     symbols.set("dotted half note", [3, "\u147B"]);
     symbols.set("half note", [2, "\u146F"]);
     symbols.set("quarter note", [1, "\u2669"]);
@@ -410,7 +410,7 @@ function lvl3(boolean){
     var rhythmMap = ["whole note", "quarter note", "dotted half note", "half note", "dotted quarter note",
          "dotted eighth note", "eighth note", "sixteenth note"];
     var symbols = new Map();
-    symbols.set("whole note", [4, "\u07CB"]);
+    symbols.set("whole note", [4, "\u0B66"]);
     symbols.set("dotted half note", [3, "\u147B"]);
     symbols.set("half note", [2, "\u146F"]);
     symbols.set("quarter note", [1, "\u2669"]);
@@ -582,7 +582,7 @@ function lvl4(boolean){
     var rhythmMap = ["whole note", "quarter note", "dotted half note", "half note", "dotted quarter note",
     "dotted eighth note", "eighth note", "sixteenth note"];
     var symbols = new Map();
-    symbols.set("whole note", [4, "\u07CB"]);
+    symbols.set("whole note", [4, "\u0B66"]);
     symbols.set("dotted half note", [3, "\u147B"]);
     symbols.set("half note", [2, "\u146F"]);
     symbols.set("quarter note", [1, "\u2669"]);
