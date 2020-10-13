@@ -1,43 +1,18 @@
 <!DOCTYPE html>
 <html>
-        <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
 
         <head>
             <link rel="icon" href="favicon1.ico">
             <title> Sound Playground: Elementary Edition</title>
             <style>
-               h1{
-                   font-size: 36px;
-               }
-               h2{
-                   font-size: 24px;
-               } 
-                
+              
     
             </style>
     
         </head>
         <body>
-    <!--
-
-      <div id="loading"></div>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-      <script>
-       
-
-       function hideLoader() {
-         setTimeout(function(){
-        document.getElementById("loading").style.display="none";
-      }, 1000);  
-
-        //$('#loading').hide();
-        }
-
-        $(window).ready(hideLoader);
-
-        // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
-        setTimeout(hideLoader, 20 * 1000); 
-      </script> -->
+   
             <div class="header">
                 
     
@@ -49,9 +24,9 @@
                       </button>
                       <div class="dropdown-content">
                         <a href="lilEarTrainer_intervals.html">Little Ear Trainer</a>
-                    <a href="rhythm_ID.html">Rhythm Randomizer</a>
+                    <a href="rhythm_randomizer.html">Rhythm Randomizer</a>
                    <a href="rhythm_grid.html">Rhythm Grids</a>
-                   <a href="musicalmath.html">Music Math Mash-up</a>
+                   <a href="music_math.html">Music Math Mash-up</a>
                    <a href="rhythm_dictation.html">Rhythm Machine</a>
                    <a href="pitch_dictation.html">Tone Machine</a>
                    <a href="melodic_dictation.html">Melody Machine</a>
@@ -60,7 +35,7 @@
                       </div>
                     </div> 
                     <!-- <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>-->
-                    <a href="aboutpage.html">About</a>
+                    <a href="about_page.html">About</a>
                     <a href="feedback.html">Feedback</a>
                   </div>
     
@@ -73,13 +48,22 @@
               </h2>
       
               </div>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your level and press "Generate!" Your exercise will appear below.
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Click the "Listen" button. You will hear one measure of rhythms in 4/4 time. All rhythms are performed at 60 BPM.
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Click the box which contains the correct answer. It will be highlighted for you. 
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Press the submit button to check your answer, and keep practicing! You can choose to continue with the same level, or generate from a new one.
+
+              <button class="accordion">Click to Show/Hide Instructions</button>
+        <div class="panel">
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your level and press "Generate!" Your exercise will appear below.
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Click the "Listen" button. You will hear one measure of rhythms in 4/4 time. All rhythms are performed at 60 BPM.
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Click the box which contains the correct answer. It will be highlighted for you. 
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Press the submit button to check your answer, and keep practicing! You can choose to continue with the same level, or generate from a new one.
+        </div>
+     
+      </div>
+    </div>
+              
 
         <br><br>
 
@@ -92,13 +76,13 @@
             <option value = 5>Level Five: syncopation with sixteenth notes</option>   
         </select>
 
-        <button id = "exercise" onclick="generateQuestion(null)">Generate!</button>
+        <button class = "buttonLarge" id = "exercise" onclick="generateQuestion(null)">Generate!</button>
 
 
         <br><br>
         <div id= "question" style= "visibility: hidden">
         
-            <button id = "listen2">Listen</button>
+            <button class = "buttonSmall" id = "listen2">Listen</button>
             <br><br>
 
                 <div id = "wrapper">
@@ -113,7 +97,7 @@
               
 
             <br><br> <br><br>
-            <button id = "submit2">Submit</button>
+            <button class = "buttonLarge" id = "submit2">Submit</button>
             </div>
             <br><br>
         
@@ -122,15 +106,21 @@
 
         <div id="result" style = "visibility:hidden"></div>
         <br>
-        <button id = "samelvl" style = "visibility:hidden">New exercise: same level</button> &nbsp; &nbsp;
-        <button id = "new" style = "visibility:hidden">New exercise: new level</button>
+        <button class = "buttonSmall" id = "samelvl" style = "visibility:hidden">New exercise: same level</button> &nbsp; &nbsp;
+        <button class = "buttonSmall" id = "new" style = "visibility:hidden">New exercise: new level</button>
 
         
         <script src = 'https://cdnjs.cloudflare.com/ajax/libs/tone/14.6.0/Tone.js'></script>
         <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
-        <script text="text/javascript" src="questionRhythm.js"></script>
-        <script text="text/javascript" src="displayRhythm.js"></script>
-        <script text="text/javascript" src="practiceSoundRhythm.js"></script>
+        <script text="text/javascript" src="build_rhythm_dictation.js"></script>
+        <script text="text/javascript" src="display_rhythm_dictation.js"></script>
+        <script text="text/javascript" src="audio.js"></script>
+        <script text="text/javascript" src="evaluator.js"></script>
+        <script text="text/javascript" src="front_end_logic.js"></script>
+
+        <script>
+          showHideDirections();
+        </script>
 
     </body>
 

@@ -18,9 +18,9 @@ window.onload = function(){
 
 function highlight(div){
     
-    var a = document.getElementById("A");
-    var b = document.getElementById("B");
-    var c = document.getElementById("C");
+    let a = document.getElementById("A");
+    let b = document.getElementById("B");
+    let c = document.getElementById("C");
 
     a.style.backgroundColor = "white";
     b.style.backgroundColor = "white";
@@ -42,23 +42,23 @@ function highlight(div){
 
 function generateQuestion(lvl){
     //alert(lvl);
-    var btn = document.getElementById("exercise");
+    let btn = document.getElementById("exercise");
     btn.disabled = true;
 
-    var question = document.getElementById("question");
+    let question = document.getElementById("question");
     question.style.visibility = "visible";
 
     if(lvl == null){
     
-    var level = document.getElementById("level");
+    let level = document.getElementById("level");
     level.disabled = "disabled";
-    var selectedLevel = level.options[level.selectedIndex].value;
+    let selectedLevel = level.options[level.selectedIndex].value;
 
     buildQuestion(selectedLevel);
     }
 
     else{
-        var level = document.getElementById("level");
+        let level = document.getElementById("level");
         level.value = lvl;
         level.disabled = "disabled";
    
@@ -70,7 +70,7 @@ function generateQuestion(lvl){
 
 function buildQuestion(selectedLevel){
 
-var commonBeams = new Map();
+const commonBeams = new Map();
 commonBeams.set("sixteenth group", ["single sixteenth note", "single sixteenth note", "single sixteenth note", "single sixteenth note"]);
 commonBeams.set("eighth note sixteenth pair", ["single eighth note", "single sixteenth note", "single sixteenth note"]);
 commonBeams.set("sixteenth pair eighth note", ["single sixteenth note", "single sixteenth note", "single eighth note"]);
@@ -81,7 +81,7 @@ commonBeams.set("sixteenth pair", ["single sixteenth note", "single sixteenth no
 commonBeams.set("sixteenth eighth sixteenth", ["single sixteenth note","single eighth note", "single sixteenth note"]);
 
 
-var rhythmBank = new Map(); //1 boolean for common beams map, 2 boolean for dots, 3 boolean for rest!
+const rhythmBank = new Map(); //1 boolean for common beams map, 2 boolean for dots, 3 boolean for rest!
 rhythmBank.set("sixteenth pair", ["16", 0.5, true, false, false]);
 rhythmBank.set("sixteenth group", ["16", 1, true, false, false]);
 rhythmBank.set("sixteenth pair eighth note", ["16", 1, true, false, false]);
@@ -104,7 +104,7 @@ rhythmBank.set("quarter rest", ["qr", 1, false, false, true]);
 rhythmBank.set("single eighth rest",["8r", 0.5, false, false, false, true] );
 
 
-var equivalents = new Map();
+const equivalents = new Map();
 equivalents.set("whole note", "1m");
 equivalents.set("dotted half note", "2n.");
 equivalents.set("half note", "2n");
@@ -120,7 +120,7 @@ equivalents.set("single sixteenth note", "16n");
 equivalents.set("quarter rest", "4n");
 equivalents.set("single eighth rest", "8n");
 
-var audioMap = new Map();
+const audioMap = new Map();
 audioMap.set("1m", [4, false]);
 audioMap.set("2n.", [3, false]);
 audioMap.set("2n", [2, false]);
@@ -130,9 +130,9 @@ audioMap.set("8n", [0.5, false]);
 audioMap.set("8n.", [0.75, false]);
 audioMap.set("16n", [0.25, false]);
 
-var rhythmArr = [];
+let rhythmArr = [];
 
-    //var arrayPossible = [];
+    //let arrayPossible = [];
 
     if(selectedLevel == 1){
         rhythmArr = ["whole note", "dotted half note","half note", "half note","quarter note", "quarter note", "quarter note"];
@@ -151,12 +151,12 @@ var rhythmArr = [];
     }
     
     
-    var ansArray = [];
-    var incorrect1 = [];
-    var incorrect2 = [];
+    let ansArray = [];
+    let incorrect1 = [];
+    let incorrect2 = [];
 
-    //var firstRhythm = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
-    var beatsLeft = 4;
+    //let firstRhythm = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
+    let beatsLeft = 4;
     
 
     ansArray = fillMeasure(ansArray, beatsLeft, rhythmBank, rhythmArr, selectedLevel, null, null, null);
@@ -165,26 +165,26 @@ var rhythmArr = [];
     incorrect2= fillMeasure(incorrect2, beatsLeft, rhythmBank, rhythmArr, selectedLevel, ansArray, incorrect1, incorrect2);
     
 
-    var mc = ["A", "B", "C"];
+    let mc = ["A", "B", "C"];
     shuffle(mc);
-    var ans = mc[0]
-    var incorrect1ans = mc[1]
-    var incorrect2ans = mc[2];
+    let ans = mc[0]
+    let incorrect1ans = mc[1]
+    let incorrect2ans = mc[2];
 
     populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, incorrect2ans, rhythmBank, commonBeams);
     
-    var decoded = decodeAnswer(ansArray, rhythmBank, commonBeams, equivalents, audioMap);
+    let decoded = decodeAnswer(ansArray, rhythmBank, commonBeams, equivalents, audioMap);
 
-    practice2(decoded, ans, selectedLevel);
+    rhythmDictationAudio(decoded, ans, selectedLevel);
 
 }
 function decodeAnswer(ansArr, rhythmBank, commonBeams, equivalents, audioMap){
-    var trueArr = []
-    for(var i = 0; i< ansArr.length; i++){
+    let trueArr = []
+    for(let i = 0; i< ansArr.length; i++){
         //console.log(ansArr[i])
-        var element = rhythmBank.get(ansArr[i]);
+        let element = rhythmBank.get(ansArr[i]);
         if(element[2] == true){
-            var arr2 = commonBeams.get(ansArr[i]);
+            let arr2 = commonBeams.get(ansArr[i]);
             for(j = 0; j < arr2.length; j++){
                 trueArr.push(arr2[j]);
             }
@@ -196,10 +196,10 @@ function decodeAnswer(ansArr, rhythmBank, commonBeams, equivalents, audioMap){
 
     }
 
-    var audio = [];
-    for(var i = 0; i<trueArr.length; i++){
-        var value = equivalents.get(trueArr[i]);
-        var time = 0;
+    let audio = [];
+    for(let i = 0; i<trueArr.length; i++){
+        let value = equivalents.get(trueArr[i]);
+        let time = 0;
         for(j = 0; j < i; j++){
             time += audioMap.get(equivalents.get(trueArr[j]))[0]; 
         }
@@ -218,9 +218,9 @@ function decodeAnswer(ansArr, rhythmBank, commonBeams, equivalents, audioMap){
 function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray, incorrect1, incorrect2){
 
     while(currentBeats > 0 ){
-         var beatsLeft = currentBeats;
+         let beatsLeft = currentBeats;
 
-          var randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
+          let randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
           //console.log(randomElement);
           if(beatsLeft == 4 && rhythmBank.get(randomElement)[4] == true){
               continue;
@@ -234,9 +234,9 @@ function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray
             continue;
           }
 
-          var currentArr = rhythmBank.get(randomElement);
+          let currentArr = rhythmBank.get(randomElement);
           //console.log(randomElement);
-          var beatValue = currentArr[1];
+          let beatValue = currentArr[1];
       
       
           if(beatValue > beatsLeft){ 
@@ -260,8 +260,8 @@ function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray
                 if(currentBeats - Math.floor(currentBeats) !== 0){
 
                     if(level == 4){
-                        var possibilities = [1, 2];
-                        var rando = possibilities[Math.floor(Math.random() * possibilities.length)];
+                        let possibilities = [1, 2];
+                        let rando = possibilities[Math.floor(Math.random() * possibilities.length)];
                         if (rando == 1){
                             array.push("dotted quarter note");
                             array.push("single eighth note");
@@ -317,8 +317,8 @@ function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray
 
                     if(level == 4){
     
-                        var randomOutcome = [1, 2];
-                        var random2 = randomOutcome[Math.floor(Math.random() * randomOutcome.length)];
+                        let randomOutcome = [1, 2];
+                        let random2 = randomOutcome[Math.floor(Math.random() * randomOutcome.length)];
                         if(random2 == 1){
                          array.push("single eighth note");
                          array.push("quarter note");

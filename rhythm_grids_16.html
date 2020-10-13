@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html>
-        <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
 
     <head>
       <link rel="icon" href="favicon1.ico">
         <title> Sound Playground: Elementary Edition</title>
         <style>
-           h1{
-               font-size: 36px;
-           }
-           h2{
-               font-size: 24px;
-           } 
-
-           
+       
         th, td {
         border: 1px solid black;
         }
@@ -24,27 +17,7 @@
 
     </head>
     <body>
-     <!--
-
-      <div id="loading"></div>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-      <script>
-       
-
-       function hideLoader() {
-         setTimeout(function(){
-        document.getElementById("loading").style.display="none";
-      }, 1000);  
-
-        //$('#loading').hide();
-        }
-
-        $(window).ready(hideLoader);
-
-        // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
-        setTimeout(hideLoader, 20 * 1000); 
-      </script> -->
-
+ 
         <div class="header">
             
 
@@ -56,9 +29,9 @@
                   </button>
                   <div class="dropdown-content">
                     <a href="lilEarTrainer_intervals.html">Little Ear Trainer</a>
-                    <a href="rhythm_ID.html">Rhythm Randomizer</a>
+                    <a href="rhythm_randomizer.html">Rhythm Randomizer</a>
                    <a href="rhythm_grid.html">Rhythm Grids</a>
-                   <a href="musicalmath.html">Music Math Mash-up</a>
+                   <a href="music_math.html">Music Math Mash-up</a>
                    <a href="rhythm_dictation.html">Rhythm Machine</a>
                    <a href="pitch_dictation.html">Tone Machine</a>
                    <a href="melodic_dictation.html">Melody Machine</a>
@@ -66,7 +39,7 @@
                   </div>
                 </div> 
                 <!-- <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>-->
-                <a href="aboutpage.html">About</a>
+                <a href="about_page.html">About</a>
                 <a href="feedback.html">Feedback</a>
 
               </div>
@@ -81,23 +54,35 @@
             </h2>
         </div>
 
-        Need a tutorial? <a href="https://www.loom.com/share/3b51383fcf524c6e9e5bf1462c6d2e6e" target="_blank"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for a demonstration of the page!
-        <br><br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 0: Need a refresher (or a break)? <a href="rhythm_grids_8.html"><span style="color: rgb(187, 120, 250); ">Click here</span></a> to check out Rhythm Grids with 8th note subdivisions. <a href="rhythm_grids.html"><span style="color: rgb(187, 120, 250); ">Click here</span></a> to check out Rhythm Grids with quarter note subdivisions.
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: You will receive a random one measure rhythm. The smallest value is a sixteenth note. The grid below is divided into sixteenth note value subdivisions.
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: If a grid box (beat) should contain a note, select it in that box's menu. Otherwise, leave it blank. When you're done, press "Submit."
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: The correct grid will be revealed for you. Practice counting out loud and clapping when you see a note in the box.
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Keep practicing!
+        <button class="accordion">Click to Show/Hide Instructions</button>
+        <div class="panel">
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: You will receive a random one measure rhythm in 4/4. The smallest value is a sixteenth note. The grid below is divided into sixteenth value subdivisions.
+          <br><br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: If a rhythm enters on a particular beat (grid box), select it with the corresponding answer menu. 
+          <br>If a rhythm lasts for more than one box (one quarter of a beat), add the rhythm under the first box it enters on, then fill the remaining boxes with arrow symbols (&#8594). This shows the total length of the rhythm.
+          
+         <div class="hoverinfo" style = "width: 100%; height: 100%;"> <span style="color: #bb78fa;">Hover here for an example!</span>
+          <p><img src="examplesixteenthnote.jpg" style = "width: 100%; height: 100%"></p>
+          </div>
 
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: When you're done, press "Submit." The correct grid will be revealed for you. Practice counting the grid numbers out loud and clapping when you see a note in a corresponding box.
+          <br><br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Keep practicing!
+        </div>
+        
+        <br><br>
+        <span style="color: rgb(187, 120, 250);">&#9834</span> Need a tutorial? <a href="https://www.loom.com/share/96e8b818f74b4377946d63016557de9d" target="_blank"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for a demonstration of the page!
+        <br><br><span style="color: rgb(187, 120, 250);">&#9834</span> Check out these other Rhythm Grids pages:
+        <br>&nbsp;&nbsp; <a href="rhythm_grid.html"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for Rhythm Grids with quarter note subdivisions!
+        <br>&nbsp;&nbsp; <a href="rhythm_grids_8.html"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for Rhythm Grids with 8th note subdivisions!
 
         <div id = "generatedExercise"> </div>
-        
+
         <table id = "answers">
           <table id = "beats" style="width:100%">
+
             <tr>
               <th>1</th>
               <th>e</th> 
@@ -121,7 +106,7 @@
               
                 <td>
                   <select id="1choicesBeat1">
-                    <option value="blank"> </option>
+                    <option value="blank">&#8594</option>
                   <option value = "dotted quarter note">&#9833.</option>
                   <option value = "quarter note">&#9833</option>
                   <option value = "dotted eighth note">&#9834.</option>
@@ -129,7 +114,7 @@
                   <option value = "single sixteenth note">&#5803</option>
                   </select></td>
                 <td><select id = "1choicesBeat1e">
-                  <option value="blank"> </option>
+                  <option value="blank">&#8594</option>
                   <option value = "dotted quarter note">&#9833.</option>
                   <option value = "quarter note">&#9833</option>
                   <option value = "dotted eighth note">&#9834.</option>
@@ -137,7 +122,7 @@
                   <option value = "single sixteenth note">&#5803</option>
               </select></td>
                 <td><select id = "1choicesBeat1+" >
-                  <option value="blank"> </option>
+                  <option value="blank">&#8594</option>
                   <option value = "dotted quarter note">&#9833.</option>
                   <option value = "quarter note">&#9833</option>
                   <option value = "dotted eighth note">&#9834.</option>
@@ -145,7 +130,7 @@
                   <option value = "single sixteenth note">&#5803</option>
               </select></td>
                 <td><select id = "1choicesBeat1a">
-                  <option value="blank"> </option>
+                  <option value="blank">&#8594</option>
                   <option value = "dotted quarter note">&#9833.</option>
                   <option value = "quarter note">&#9833</option>
                   <option value = "dotted eighth note">&#9834.</option>
@@ -153,7 +138,7 @@
                   <option value = "single sixteenth note">&#5803</option>
               </select></td> 
                 <td><select id = "1choicesBeat2">
-                  <option value="blank"> </option>
+                  <option value="blank">&#8594</option>
                   <option value = "dotted quarter note">&#9833.</option>
                   <option value = "quarter note">&#9833</option>
                   <option value = "dotted eighth note">&#9834.</option>
@@ -161,7 +146,7 @@
                   <option value = "single sixteenth note">&#5803</option>
               </select></td>
                 <td><select id = "1choicesBeat2e" >
-                  <option value="blank"> </option>
+                  <option value="blank">&#8594</option>
                   <option value = "dotted quarter note">&#9833.</option>
                   <option value = "quarter note">&#9833</option>
                   <option value = "dotted eighth note">&#9834.</option>
@@ -169,7 +154,7 @@
                   <option value = "single sixteenth note">&#5803</option>
               </select> </td>
                 <td><select id = "1choicesBeat2+" >
-                  <option value="blank"> </option>
+                  <option value="blank">&#8594</option>
                   <option value = "dotted quarter note">&#9833.</option>
                   <option value = "quarter note">&#9833</option>
                   <option value = "dotted eighth note">&#9834.</option>
@@ -177,7 +162,7 @@
                   <option value = "single sixteenth note">&#5803</option>
               </select></td>
                 <td><select id = "1choicesBeat2a" >
-                  <option value="blank"> </option>
+                  <option value="blank">&#8594</option>
                   <option value = "dotted quarter note">&#9833.</option>
                   <option value = "quarter note">&#9833</option>
                   <option value = "dotted eighth note">&#9834.</option>
@@ -185,7 +170,7 @@
                   <option value = "single sixteenth note">&#5803</option>
               </select></td> 
                     <td><select id = "1choicesBeat3">
-                      <option value="blank"> </option>
+                      <option value="blank">&#8594</option>
                       <option value = "dotted quarter note">&#9833.</option>
                       <option value = "quarter note">&#9833</option>
                       <option value = "dotted eighth note">&#9834.</option>
@@ -193,7 +178,7 @@
                       <option value = "single sixteenth note">&#5803</option>
                   </select> </td>
                     <td><select id = "1choicesBeat3e" >
-                      <option value="blank"> </option>
+                      <option value="blank">&#8594</option>
                       <option value = "dotted quarter note">&#9833.</option>
                       <option value = "quarter note">&#9833</option>
                       <option value = "dotted eighth note">&#9834.</option>
@@ -201,7 +186,7 @@
                       <option value = "single sixteenth note">&#5803</option>
                   </select> </td>
                     <td><select id = "1choicesBeat3+">
-                      <option value="blank"> </option>
+                      <option value="blank">&#8594</option>
                       <option value = "dotted quarter note">&#9833.</option>
                       <option value = "quarter note">&#9833</option>
                       <option value = "dotted eighth note">&#9834.</option>
@@ -209,7 +194,7 @@
                       <option value = "single sixteenth note">&#5803</option>
                   </select> </td>
                     <td><select id = "1choicesBeat3a" >
-                      <option value="blank"> </option>
+                      <option value="blank">&#8594</option>
                       <option value = "dotted quarter note">&#9833.</option>
                       <option value = "quarter note">&#9833</option>
                       <option value = "dotted eighth note">&#9834.</option>
@@ -217,7 +202,7 @@
                       <option value = "single sixteenth note">&#5803</option>
                   </select></td> 
                     <td><select id = "1choicesBeat4" >
-                      <option value="blank"> </option>
+                      <option value="blank">&#8594</option>
                       <option value = "dotted quarter note">&#9833.</option>
                       <option value = "quarter note">&#9833</option>
                       <option value = "dotted eighth note">&#9834.</option>
@@ -225,7 +210,7 @@
                       <option value = "single sixteenth note">&#5803</option>
                   </select> </td>
                     <td><select id = "1choicesBeat4e" >
-                      <option value="blank"> </option>
+                      <option value="blank">&#8594</option>
                       <option value = "dotted quarter note">&#9833.</option>
                       <option value = "quarter note">&#9833</option>
                       <option value = "dotted eighth note">&#9834.</option>
@@ -233,7 +218,7 @@
                       <option value = "single sixteenth note">&#5803</option>
                   </select></td>
                     <td><select id = "1choicesBeat4+">
-                      <option value="blank"> </option>
+                      <option value="blank">&#8594</option>
                       <option value = "dotted quarter note">&#9833.</option>
                       <option value = "quarter note">&#9833</option>
                       <option value = "dotted eighth note">&#9834.</option>
@@ -241,7 +226,7 @@
                       <option value = "single sixteenth note">&#5803</option>
                   </select> </td>
                     <td><select id = "1choicesBeat4a" >
-                      <option value="blank"> </option>
+                      <option value="blank">&#8594</option>
                       <option value = "dotted quarter note">&#9833.</option>
                       <option value = "quarter note">&#9833</option>
                       <option value = "dotted eighth note">&#9834.</option>
@@ -257,7 +242,7 @@
 
         <br>
 
-        <button id = "submit">Submit</button>
+        <button class = "buttonLarge" id = "submit">Submit</button>
         <br>
         <br>
 
@@ -291,11 +276,18 @@
           </div>
           
           <br>
-          <button id = "new" style = "visibility:hidden">Create new exercise!</button>
+          <button class = "buttonSmall" id = "new" style = "visibility:hidden">Create new exercise!</button>
 
         <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
+        <script text="text/javascript" src="clear_data.js"></script>
         <script text="text/javascript" src="rhythm_grids_16ths.js"></script>
-        <script text="text/javascript" src="cleardata.js"></script>
+        <script text="text/javascript" src="evaluate_rhythm_grid.js"></script>
+        <script text="text/javascript" src="front_end_logic.js"></script>
+
+        <script>
+         showHideDirections();
+          </script>
+        <script text="text/javascript" src="clear_data.js"></script>
      
 
 

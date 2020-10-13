@@ -319,7 +319,7 @@ function buildQuestion(melody, harmony){
     var incorrect2ans = mc[2];
 
     populateDivs(notesArray, ans, incorrect1, incorrect1ans, incorrect2, incorrect2ans, noteMap);
-    practice2part(notesArray, ans, melody, harmony);
+    harmonicDictationAudio(notesArray, ans, melody, harmony);
 
 }
 

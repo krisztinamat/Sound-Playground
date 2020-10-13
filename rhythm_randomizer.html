@@ -1,43 +1,17 @@
 <!DOCTYPE html>
 <html>
-        <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
 
     <head>
       <link rel="icon" href="favicon1.ico">
         <title> Sound Playground: Elementary Edition</title>
         <style>
-           h1{
-               font-size: 36px;
-           }
-           h2{
-               font-size: 24px;
-           } 
-            
 
         </style>
 
     </head>
     <body>
-   <!--
 
-      <div id="loading"></div>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-      <script>
-       
-
-       function hideLoader() {
-         setTimeout(function(){
-        document.getElementById("loading").style.display="none";
-      }, 1000);  
-
-        //$('#loading').hide();
-        }
-
-        $(window).ready(hideLoader);
-
-        // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
-        setTimeout(hideLoader, 20 * 1000); 
-      </script> -->
         <div class="header">
 
           <div class="navbar">
@@ -48,9 +22,9 @@
               </button>
               <div class="dropdown-content">
                 <a href="lilEarTrainer_intervals.html">Little Ear Trainer</a>
-                <a href="rhythm_ID.html">Rhythm Randomizer</a>
+                <a href="rhythm_randomizer.html">Rhythm Randomizer</a>
                <a href="rhythm_grid.html">Rhythm Grids</a>
-               <a href="musicalmath.html">Music Math Mash-up</a>
+               <a href="music_math.html">Music Math Mash-up</a>
                <a href="rhythm_dictation.html">Rhythm Machine</a>
                <a href="pitch_dictation.html">Tone Machine</a>
                <a href="melodic_dictation.html">Melody Machine</a>
@@ -58,7 +32,7 @@
               </div>
             </div> 
             <!-- <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>-->
-            <a href="aboutpage.html">About</a>
+            <a href="about_page.html">About</a>
             <a href="feedback.html">Feedback</a>
           </div>
 
@@ -73,14 +47,17 @@
 
         </div>
 
-        
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your practice mode (time signature) in the menu and press "Generate".
-       <br>
-       <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: You will be shown a random rhythm. Based on your meter, you must decide its value. 
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Select the correct identifiers in the three answer menus, then press "Submit".
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Check your result and keep practicing!
+        <button class="accordion">Click to Show/Hide Instructions</button>
+        <div class="panel">
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Select your practice mode (time signature) in the menu and press "Generate".
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: You will be shown a random rhythm. Based on your meter, you must decide its value. 
+           <br>
+           <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Select the correct identifiers in the three answer menus, then press "Submit".
+           <br>
+           <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Check your result and keep practicing!
+        </div>
 
         <br><br>
         
@@ -90,13 +67,13 @@
           <option value = 3>Time Signatures over 2 (Cut-time, 3/2, 4/2 etc.)</option>
         </select>
 
-        <button id = "exercise" onclick="generateQuestion()">Generate!</button>
+        <button class = "buttonLarge" id = "exercise" onclick="generateQuestion()">Generate!</button>
 
         <br>
         <div id = "generatedExercise" style = "height: 150px;"></div>
 
         
-        <div id = "rhythms" style = "visibility: hidden;">
+        <div id = "rhythm" style = "visibility: hidden;">
           Construct the name of the rhythm and its beat value:<br>
           <select id="answerChoice1">
             <option value="dotted whole">dotted whole</option>
@@ -139,19 +116,24 @@
         </div>
         <br>
 
-          <button id = "submit" style = "visibility: hidden;">Submit</button>
+          <button class = "buttonLarge" id = "submit" style = "visibility: hidden;">Submit</button>
           <br><br>
 
 
         <div id="result" style = "visibility:hidden"></div>
         <br>
-        <button id = "samemode" style = "visibility:hidden">New exercise: same mode</button> &nbsp; &nbsp;
-        <button id = "new" style = "visibility:hidden">New exercise: new mode</button>
+        <button class = "buttonSmall" id = "samemode" style = "visibility:hidden">New exercise: same mode</button> &nbsp; &nbsp;
+        <button class = "buttonSmall" id = "new" style = "visibility:hidden">New exercise: new mode</button>
 
         
         <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
         <script text="text/javascript" src="randomizer.js"></script>
-        <script text="text/javascript" src="answer.js"></script> 
+        <script text="text/javascript" src="evaluator.js"></script> 
+        <script text="text/javascript" src="front_end_logic.js"></script>
+
+        <script>
+          showHideDirections();
+          </script>
 
     </body>
 

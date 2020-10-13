@@ -83,7 +83,7 @@ function generateQuestion(lvlpitch, lvlrhythm){
 
 function buildQuestion(selectedLevelPitch, selectedLevelRhythm){
 
-var commonBeams = new Map();
+const commonBeams = new Map();
 commonBeams.set("sixteenth group", ["single sixteenth note", "single sixteenth note", "single sixteenth note", "single sixteenth note"]);
 commonBeams.set("eighth note sixteenth pair", ["single eighth note", "single sixteenth note", "single sixteenth note"]);
 commonBeams.set("sixteenth pair eighth note", ["single sixteenth note", "single sixteenth note", "single eighth note"]);
@@ -94,7 +94,7 @@ commonBeams.set("sixteenth pair", ["single sixteenth note", "single sixteenth no
 commonBeams.set("sixteenth eighth sixteenth", ["single sixteenth note","single eighth note", "single sixteenth note"]);
 
 
-var rhythmBank = new Map(); //1 boolean for common beams map, 2 boolean for dots, 3 boolean for rest!
+const rhythmBank = new Map(); //1 boolean for common beams map, 2 boolean for dots, 3 boolean for rest!
 rhythmBank.set("sixteenth pair", ["16", 0.5, true, false, false]);
 rhythmBank.set("sixteenth group", ["16", 1, true, false, false]);
 rhythmBank.set("sixteenth pair eighth note", ["16", 1, true, false, false]);
@@ -117,7 +117,7 @@ rhythmBank.set("quarter rest", ["qr", 1, false, false, true]);
 rhythmBank.set("single eighth rest",["8r", 0.5, false, false, false, true] );
 
 
-var equivalents = new Map();
+const equivalents = new Map();
 equivalents.set("whole note", "1m");
 equivalents.set("dotted half note", "2n.");
 equivalents.set("half note", "2n");
@@ -133,7 +133,7 @@ equivalents.set("single sixteenth note", "16n");
 equivalents.set("quarter rest", "4n");
 equivalents.set("single eighth rest", "8n");
 
-var audioMap = new Map();
+const audioMap = new Map();
 audioMap.set("1m", [4, false]);
 audioMap.set("2n.", [3, false]);
 audioMap.set("2n", [2, false]);
@@ -143,7 +143,7 @@ audioMap.set("8n", [0.5, false]);
 audioMap.set("8n.", [0.75, false]);
 audioMap.set("16n", [0.25, false]);
 
-var rhythmArr = [];
+let rhythmArr = [];
 
     //var arrayPossible = [];
 
@@ -164,9 +164,9 @@ var rhythmArr = [];
     }
     
     //these refer to rhythmic component of answer
-    var ansArray = [];
-    var incorrect1 = [];
-    var incorrect2 = [];
+    let ansArray = [];
+    let incorrect1 = [];
+    let incorrect2 = [];
 
     //var firstRhythm = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
     var beatsLeft = 4;
@@ -178,41 +178,41 @@ var rhythmArr = [];
     incorrect2= incorrect1.slice();
     incorrect3 = ansArray.slice()
 
-    var ansSize = getArraySize(ansArray, rhythmBank, commonBeams);
-    var incorrectSize = getArraySize(incorrect1, rhythmBank, commonBeams);    
+    let ansSize = getArraySize(ansArray, rhythmBank, commonBeams);
+    let incorrectSize = getArraySize(incorrect1, rhythmBank, commonBeams);    
 
-    var pitches = getPitches(selectedLevelPitch, ansSize, incorrectSize);
+    let pitches = getPitches(selectedLevelPitch, ansSize, incorrectSize);
     
     
 
-    var completeAnsArray = [ansArray, pitches[0]];
-    var completeincorrect1 = [incorrect1, pitches[1]];
-    var completeincorrect2 = [incorrect2, pitches[2]];
-    var completeincorrect3 = [incorrect3, pitches[3]]; 
+    let completeAnsArray = [ansArray, pitches[0]];
+    let completeincorrect1 = [incorrect1, pitches[1]];
+    let completeincorrect2 = [incorrect2, pitches[2]];
+    let completeincorrect3 = [incorrect3, pitches[3]]; 
     
 
-    var mc = ["A", "B", "C", "D"];
+    let mc = ["A", "B", "C", "D"];
     shuffle(mc);
-    var ans = mc[0]
-    var incorrect1ans = mc[1]
-    var incorrect2ans = mc[2];
-    var incorrect3ans = mc[3];
+    const ans = mc[0]
+    const incorrect1ans = mc[1]
+    const incorrect2ans = mc[2];
+    const incorrect3ans = mc[3];
 
     populateDivs(completeAnsArray, ans, completeincorrect1, incorrect1ans, completeincorrect2, incorrect2ans, completeincorrect3, incorrect3ans, rhythmBank, commonBeams);
     
-    var decoded = decodeAnswer(completeAnsArray, rhythmBank, commonBeams, equivalents, audioMap);
+    let decoded = decodeAnswer(completeAnsArray, rhythmBank, commonBeams, equivalents, audioMap);
 
-    practice2(decoded, ans, selectedLevelPitch, selectedLevelRhythm);
+    melodyAudio(decoded, ans, selectedLevelPitch, selectedLevelRhythm);
 
 }
 
 function getArraySize(ansArr, rhythmBank, commonBeams){
-    var trueArr = []
-    for(var i = 0; i< ansArr.length; i++){
+    let trueArr = []
+    for(let i = 0; i< ansArr.length; i++){
         
-        var element = rhythmBank.get(ansArr[i]);
+        let element = rhythmBank.get(ansArr[i]);
         if(element[2] == true){
-            var arr2 = commonBeams.get(ansArr[i]);
+            let arr2 = commonBeams.get(ansArr[i]);
             for(j = 0; j < arr2.length; j++){
                 trueArr.push(arr2[j]);
             }
@@ -228,12 +228,12 @@ function getArraySize(ansArr, rhythmBank, commonBeams){
 }
 function decodeAnswer(ansArr, rhythmBank, commonBeams, equivalents, audioMap){
 
-    var trueArr = []
+    let trueArr = []
     for(var i = 0; i< ansArr[0].length; i++){
        
-        var element = rhythmBank.get(ansArr[0][i]);
+        let element = rhythmBank.get(ansArr[0][i]);
         if(element[2] == true){
-            var arr2 = commonBeams.get(ansArr[0][i]);
+            let arr2 = commonBeams.get(ansArr[0][i]);
             for(j = 0; j < arr2.length; j++){
                 trueArr.push(arr2[j]);
             }
@@ -247,10 +247,10 @@ function decodeAnswer(ansArr, rhythmBank, commonBeams, equivalents, audioMap){
    
 
     var audio = [];
-    for(var i = 0; i<trueArr.length; i++){
-        var value = equivalents.get(trueArr[i]);
+    for(let i = 0; i<trueArr.length; i++){
+        let value = equivalents.get(trueArr[i]);
        
-        var time = 0;
+        let time = 0;
         for(j = 0; j < i; j++){
             time += audioMap.get(equivalents.get(trueArr[j]))[0]; 
         }
@@ -270,26 +270,26 @@ function decodeAnswer(ansArr, rhythmBank, commonBeams, equivalents, audioMap){
 }
 
 function getPitches(selectedLevel, correctsize, incorrectSize){
-    var arrayPossible = ["A3", "B3",
+    const arrayPossible = ["A3", "B3",
     "C4", "D4",  "E4", "F4",  "G4",  "A4",  "B4",
     "C5", "D5", "E5", "F5"];
 
     
-    var notesArray = [];
-    var incorrect1 = [];
-    var incorrect2 = [];
-    var incorrect3 = [];
+    let notesArray = [];
+    let incorrect1 = [];
+    let incorrect2 = [];
+    let incorrect3 = [];
 
-    var index1 = Math.floor(Math.random() * arrayPossible.length);
-    var note1 = arrayPossible[index1];
+    let index1 = Math.floor(Math.random() * arrayPossible.length);
+    let note1 = arrayPossible[index1];
     notesArray.push(note1);
     incorrect1.push(note1);
     incorrect2.push(note1);
     incorrect3.push(note1);
 
-    var direction = [-1, 1];
+    const direction = [-1, 1];
 
-    var intervalArray = [0, 1];
+    let intervalArray = [0, 1];
     
 
     if(selectedLevel == 2){
@@ -303,21 +303,21 @@ function getPitches(selectedLevel, correctsize, incorrectSize){
         intervalArray = [0, 1, 2, 3, 4, 5, 6, 7]; 
     }
     
-    var current = index1;
-    var current1 = index1;
-    var current2 = index1;
-    var current3 = index1;
+    let current = index1;
+    let current1 = index1;
+    let current2 = index1;
+    let current3 = index1;
    
     
     while(notesArray.length < correctsize){
-        var position = current;
-        var nextNote = intervalArray[Math.floor(Math.random() * intervalArray.length)];
-        var nextdirection = direction[Math.floor(Math.random() * direction.length)];
+        let position = current;
+        let nextNote = intervalArray[Math.floor(Math.random() * intervalArray.length)];
+        let nextdirection = direction[Math.floor(Math.random() * direction.length)];
 
         if(((nextNote * nextdirection)+ position > arrayPossible.length-1) || ((nextNote * nextdirection)+ position < 0)){
             nextdirection = nextdirection * -1;
         } 
-        var nextindex = (nextNote * nextdirection)+ position;
+        let nextindex = (nextNote * nextdirection)+ position;
         nextNote = arrayPossible[nextindex];
 
         if(nextNote == null){
@@ -327,16 +327,16 @@ function getPitches(selectedLevel, correctsize, incorrectSize){
         notesArray.push(nextNote);
         current = nextindex;
     }
-    var j = 1
+    let j = 1
     while(j < incorrectSize){
-        var position1 = current1;
-        var nextNote1 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
-        var nextdirection1 = direction[Math.floor(Math.random() * direction.length)];
+        let position1 = current1;
+        let nextNote1 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
+        let nextdirection1 = direction[Math.floor(Math.random() * direction.length)];
 
         if(((nextNote1 * nextdirection1)+ position1 > arrayPossible.length-1) || ((nextNote1 * nextdirection1)+ position1 < 0)){
             nextdirection1 = nextdirection1 * -1;
         }
-        var nextindex1 = (nextNote1 * nextdirection1)+ position1;
+        let nextindex1 = (nextNote1 * nextdirection1)+ position1;
         nextNote1 = arrayPossible[nextindex1];
 
         if(nextNote1 == null){
@@ -363,14 +363,14 @@ function getPitches(selectedLevel, correctsize, incorrectSize){
     }
     j=1;
     while(j < incorrectSize){    
-        var position2 = current2;
-        var nextNote2 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
-        var nextdirection2 = direction[Math.floor(Math.random() * direction.length)];
+        let position2 = current2;
+        let nextNote2 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
+        let nextdirection2 = direction[Math.floor(Math.random() * direction.length)];
 
         if(((nextNote2 * nextdirection2)+ position2 > arrayPossible.length-1) || ((nextNote2 * nextdirection2)+ position2 < 0)){
             nextdirection2 = nextdirection2 * -1;
         } 
-        var nextindex2 = (nextNote2 * nextdirection2)+ position2;  
+        let nextindex2 = (nextNote2 * nextdirection2)+ position2;  
         nextNote2 = arrayPossible[nextindex2];
 
         if(nextNote2 == null){
@@ -397,14 +397,14 @@ function getPitches(selectedLevel, correctsize, incorrectSize){
 
     j=1;
     while(j < correctsize){    
-        var position3 = current3;
-        var nextNote3 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
-        var nextdirection3 = direction[Math.floor(Math.random() * direction.length)];
+        let position3 = current3;
+        let nextNote3 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
+        let nextdirection3 = direction[Math.floor(Math.random() * direction.length)];
 
         if(((nextNote3 * nextdirection3)+ position3 > arrayPossible.length-1) || ((nextNote3 * nextdirection3)+ position3 < 0)){
-            nextdirection2 = nextdirection2 * -1;
+            nextdirection3 = nextdirection3 * -1;
         } 
-        var nextindex3 = (nextNote3 * nextdirection3)+ position3;  
+        let nextindex3 = (nextNote3 * nextdirection3)+ position3;  
         nextNote3 = arrayPossible[nextindex3];
 
         if(nextNote3 == null){
@@ -427,16 +427,16 @@ function getPitches(selectedLevel, correctsize, incorrectSize){
         }
 
     }
-    var pitches = [notesArray, incorrect1, incorrect2, incorrect3];
+    let pitches = [notesArray, incorrect1, incorrect2, incorrect3];
     return pitches;    
 }
 
 function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray, incorrect1, incorrect2){
 
     while(currentBeats > 0 ){
-         var beatsLeft = currentBeats;
+         let beatsLeft = currentBeats;
 
-          var randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
+          let randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
        
           if(beatsLeft == 4 && rhythmBank.get(randomElement)[4] == true){
               continue;
@@ -450,14 +450,14 @@ function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray
             continue;
           }
 
-          var currentArr = rhythmBank.get(randomElement);
+          let currentArr = rhythmBank.get(randomElement);
        
-          var beatValue = currentArr[1];
+          let beatValue = currentArr[1];
       
       
           if(beatValue > beatsLeft){ 
           continue; 
-          console.log("rats!");
+          
           }
 
           else{
@@ -476,7 +476,7 @@ function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray
                 if(currentBeats - Math.floor(currentBeats) !== 0){
 
                     if(level == 4){
-                        var possibilities = [1, 2];
+                        let possibilities = [1, 2];
                         var rando = possibilities[Math.floor(Math.random() * possibilities.length)];
                         if (rando == 1){
                             array.push("dotted quarter note");
@@ -533,8 +533,8 @@ function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray
 
                     if(level == 4){
     
-                        var randomOutcome = [1, 2];
-                        var random2 = randomOutcome[Math.floor(Math.random() * randomOutcome.length)];
+                        let randomOutcome = [1, 2];
+                        let random2 = randomOutcome[Math.floor(Math.random() * randomOutcome.length)];
                         if(random2 == 1){
                          array.push("single eighth note");
                          array.push("quarter note");
@@ -589,7 +589,3 @@ function fillMeasure(array, currentBeats, rhythmBank, rhythmArr, level, ansArray
       return array;
 
 }
-
-
-
-

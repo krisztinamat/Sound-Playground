@@ -1,4 +1,3 @@
-
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -9,10 +8,10 @@ function shuffle(a) {
 
 function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, incorrect2ans, incorrect3, incorrect3ans, rhythmBank, commonBeams){
 
-    var div1 = document.getElementById(ans);
-    var div2 = document.getElementById(incorrect1ans);
-    var div3 = document.getElementById(incorrect2ans);
-    var div4 = document.getElementById(incorrect3ans);
+    let div1 = document.getElementById(ans);
+    let div2 = document.getElementById(incorrect1ans);
+    let div3 = document.getElementById(incorrect2ans);
+    let div4 = document.getElementById(incorrect3ans);
     
     //console.log(ansArray);
     //console.log(incorrect1);
@@ -29,10 +28,8 @@ function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, inco
     
     
     function drawStaff(div1, array, rhythmBank, commonBeams){
-    
-   
         
-    var noteMap = new Map();
+    const noteMap = new Map();
     noteMap.set("A3", "a/3");
     noteMap.set("B3", "b/3");
     noteMap.set("C4", "c/4");
@@ -59,17 +56,17 @@ function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, inco
     
         
     
-    var notes = [];
-    var beams = [];
+    let notes = [];
+    let beams = [];
 
-    var correspondingIndex = new Map();
-    var a = 0;
-    for(var i = 0; i < array[0].length; i++){
-        var currentItem = rhythmBank.get(array[0][i]); 
+    const correspondingIndex = new Map();
+    let a = 0;
+    for(let i = 0; i < array[0].length; i++){
+        let currentItem = rhythmBank.get(array[0][i]); 
         if(currentItem[2]== true){
-            var arr = commonBeams.get(array[0][i]);
-            var arr2 = [];
-            for(var k = a; k < a+arr.length; k++){
+            let arr = commonBeams.get(array[0][i]);
+            let arr2 = [];
+            for(let k = a; k < a+arr.length; k++){
                 arr2.push(k);
             }
             correspondingIndex.set(i, arr2);
@@ -81,25 +78,23 @@ function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, inco
         }
         
     }
-    //console.log(correspondingIndex);
-
     
-    for(var i = 0; i < array[0].length; i++){
-        var currentItem = rhythmBank.get(array[0][i]);
-        var currentPitch = correspondingIndex.get(i); //array
-        var truepitch = array[1][currentPitch[0]];
+    for(let i = 0; i < array[0].length; i++){
+        let currentItem = rhythmBank.get(array[0][i]);
+        let currentPitch = correspondingIndex.get(i); //array
+        let truepitch = array[1][currentPitch[0]];
         truepitch = noteMap.get(truepitch);
         
         if(currentItem[2]== true){
             
-            var arr = commonBeams.get(array[0][i]);
+            let arr = commonBeams.get(array[0][i]);
             notes1 = []
 
-            for(var j = 0; j < arr.length; j++){
+            for(let j = 0; j < arr.length; j++){
                 
-                var data = rhythmBank.get(arr[j]);
-                var duration = data[0];
-                var pitch = correspondingIndex.get(i);
+                let data = rhythmBank.get(arr[j]);
+                let duration = data[0];
+                let pitch = correspondingIndex.get(i);
                 //console.log(pitch);
                 pitch = noteMap.get(array[1][pitch[j]]);
                 //console.log(pitch);
@@ -117,7 +112,7 @@ function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, inco
     
         }
         else{
-            var duration = currentItem[0];
+            let duration = currentItem[0];
             if(currentItem[3] == true){
                 notes.push(new VF.StaveNote({clef: "treble", keys: [truepitch], duration: duration }).addDot(0));
             }

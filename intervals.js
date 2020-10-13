@@ -17,17 +17,17 @@ window.onload = function(){
 }
 
 function generateQuestion(intval){
-    var btn = document.getElementById("exercise");
+    let btn = document.getElementById("exercise");
     btn.disabled = true;
 
-    var question = document.getElementById("question");
+    let question = document.getElementById("question");
     question.style.visibility = "visible";
 
-    var selectedLevel = "";
+    let selectedLevel = "";
 
     if(intval != null){
     
-        var level = document.getElementById("level");
+        let level = document.getElementById("level");
         level.value = intval;
         level.disabled = "disabled";
         selectedLevel = intval;
@@ -36,12 +36,12 @@ function generateQuestion(intval){
 
     else{
             //get the level selected
-    var level = document.getElementById("level");
+    let level = document.getElementById("level");
     level.disabled = "disabled";
     selectedLevel = level.options[level.selectedIndex].value;
     }
 
-    var answerChoice = document.getElementById("answerChoice");
+    let answerChoice = document.getElementById("answerChoice");
 
     if(selectedLevel == 1){
     answerChoice.options[0].style.visibility = "visible";
@@ -104,19 +104,19 @@ function generateQuestion(intval){
 
 function buildQuestion(selectedLevel){
 
-    var arrayPossible = ["A2","A#2", "B2", "C3", "C#3", "D3", "D#3", "E3", "F3", "F#3", "G3", "G#3", "A3", "A#3", "B3",
+    const arrayPossible = ["A2","A#2", "B2", "C3", "C#3", "D3", "D#3", "E3", "F3", "F#3", "G3", "G#3", "A3", "A#3", "B3",
     "C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4",
     "C5", "C#5", "D5", "D#5", "E5"]
     
-    var notesArray = [];
-    index1 = Math.floor(Math.random() * arrayPossible.length);
-    var index2 = null;
-    var interval = null;
-    var ans = "";
-    var direction = [-1, 1];
+    let notesArray = [];
+    let index1 = Math.floor(Math.random() * arrayPossible.length);
+    let index2 = null;
+    let interval = null;
+    let ans = "";
+    let direction = [-1, 1];
 
 
-    var intervalArray = null;
+    let intervalArray = null;
 
     if(selectedLevel == 2){
         intervalArray = [0, 2, 4];
@@ -149,9 +149,9 @@ function buildQuestion(selectedLevel){
     else{
         //fill out rest of the steps once here
         //console.log(intervalArray);
-        var randomInterval = intervalArray[Math.floor(Math.random() * intervalArray.length)];
+        let randomInterval = intervalArray[Math.floor(Math.random() * intervalArray.length)];
         //console.log(randomInterval);
-        var randomDirection = direction[Math.floor(Math.random() * direction.length)];
+        let randomDirection = direction[Math.floor(Math.random() * direction.length)];
         interval = randomInterval; // should be converted to written answer;
         randomInterval = randomInterval*randomDirection;
         if((index1 + randomInterval > (arrayPossible.length-1)) || (index1 +randomInterval < (0)) ){
@@ -191,12 +191,12 @@ function buildQuestion(selectedLevel){
         
     }
 
-    var note1 = arrayPossible[index1];
-    var note2 = arrayPossible[index2];
+    const note1 = arrayPossible[index1];
+    const note2 = arrayPossible[index2];
     notesArray.push(note1);
     notesArray.push(note2);
 
-    practice2(notesArray, ans, true, selectedLevel);
+    intervalByNumberAudio(notesArray, ans, true, selectedLevel);
 
 }
 

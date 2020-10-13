@@ -12,15 +12,15 @@ window.onload = function(){
     sessionStorage.removeItem("selection");
 
     if(sessionStorage.getItem("timeSig2") != null){
-        var mode = sessionStorage.getItem("timeSig2");
+        const mode = sessionStorage.getItem("timeSig2");
         if(mode === "3"){
-            var type = document.getElementById("mode");
+            let type = document.getElementById("mode");
             type.value = 3;
             type.disabled = "disabled";
             this.generateQuestion(3);  
         }
         else if(mode === "2"){
-            var type = document.getElementById("mode");
+            let type = document.getElementById("mode");
             type.value = 2;
             type.disabled = "disabled";
             this.generateQuestion(2);
@@ -38,25 +38,23 @@ window.onload = function(){
 function generateQuestion(type){
   
     if(type == null){
-    var mode = document.getElementById("mode");
+    let mode = document.getElementById("mode");
     mode.disabled = "disabled";
     type = mode.options[mode.selectedIndex].value;
     }
-
+    
     if(type == 1){
-        
-        rhythm(1);
+        rhythmRandomize(1);
+    }else if(type == 2){
+        rhythmRandomize(2);
+    }else{
+        rhythmRandomize(3);
     }
-    else if(type == 3){
-        rhythm(3);
-    }
-    else{
-        
-        rhythm(2);
-    }
+
 }
 
-function rhythm(rhythm){
+function rhythmRandomize(rhythm){
+//console.log(rhythm);
 var exercise = document.getElementById("exercise");
 exercise.disabled = true;
 
@@ -72,10 +70,10 @@ stave.addClef("treble");
 stave.setContext(context).draw();
 
 
-var rhythmBank = new Map(); //key is a rhythm, value is beat total
+const rhythmBank = new Map(); //key is a rhythm, value is beat total
 
 var ans = ["", ""];
-var rhythmArr = [];
+let rhythmArr = [];
 
 if(rhythm == 1){
 rhythmBank.set("whole note", ["4 beats", "w", "whole","note(s)"] );
@@ -149,20 +147,21 @@ else{
 
 }
 
-var div = document.getElementById("rhythms");
-div.style.visibility = "visible";
+let rhythmDiv = document.getElementById("rhythm");
+rhythmDiv.style.visibility = "visible";
+console.log("visible!");
 
-var randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
-var info = rhythmBank.get(randomElement);
+let randomElement = rhythmArr[Math.floor(Math.random() * rhythmArr.length)];
+let info = rhythmBank.get(randomElement);
 
 ans[0] = info[2];
 ans[1] = info[3];
 ans[2] = info[0];
 
-var duration = info[1];
+let duration = info[1];
 
-var notes = [];
-var beams = [];
+let notes = [];
+let beams = [];
 
 if(randomElement === "whole rest"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["d/5"], duration: duration }));
@@ -225,11 +224,6 @@ var submit = document.getElementById("submit");
 submit.style.visibility = "visible";
 
 
-submit.addEventListener("click", function(){getAnswer(ans, rhythm)} );
+submit.addEventListener("click", function(){getAnswerRhythmRandomizer(ans, rhythm)} );
 
 }
-
-
-
-
-

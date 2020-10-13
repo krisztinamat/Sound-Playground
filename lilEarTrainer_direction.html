@@ -1,43 +1,15 @@
 <!DOCTYPE html>
 <html>
-        <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
 
     <head>
       <link rel="icon" href="favicon1.ico">
         <title> Sound Playground: Elementary Edition</title>
         <style>
-           h1{
-               font-size: 36px;
-           }
-           h2{
-               font-size: 24px;
-           } 
-            
-
         </style>
 
     </head>
     <body>
-   <!--
-
-      <div id="loading"></div>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-      <script>
-       
-
-       function hideLoader() {
-         setTimeout(function(){
-        document.getElementById("loading").style.display="none";
-      }, 1000);  
-
-        //$('#loading').hide();
-        }
-
-        $(window).ready(hideLoader);
-
-        // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
-        setTimeout(hideLoader, 20 * 1000); 
-      </script> -->
 
         <div class="header">
             
@@ -50,9 +22,9 @@
                   </button>
                   <div class="dropdown-content">
                     <a href="lilEarTrainer_intervals.html">Little Ear Trainer</a>
-                    <a href="rhythm_ID.html">Rhythm Randomizer</a>
+                    <a href="rhythm_randomizer.html">Rhythm Randomizer</a>
                    <a href="rhythm_grid.html">Rhythm Grids</a>
-                   <a href="musicalmath.html">Music Math Mash-up</a>
+                   <a href="music_math.html">Music Math Mash-up</a>
                    <a href="rhythm_dictation.html">Rhythm Machine</a>
                    <a href="pitch_dictation.html">Tone Machine</a>
                    <a href="melodic_dictation.html">Melody Machine</a>
@@ -60,7 +32,7 @@
                   </div>
                 </div> 
                 <!-- <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>-->
-                <a href="aboutpage.html">About</a>
+                <a href="about_page.html">About</a>
                 <a href="feedback.html">Feedback</a>
               </div>
 
@@ -73,38 +45,58 @@
               Welcome to Little Ear Trainer: Pitch Direction page! 
             </h2>
         </div>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Click the "Listen" button. You will hear two notes.
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Decide whether the music got higher (went up), got lower (went down), or stayed the same.
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Click the answer that matches your choice and press the "Submit" button.
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Read your result and keep practicing!
-        <br>
-        <span style="color: rgb(187, 120, 250);">&#9834</span> Step 5: Ready for a challenge? <a href="lilEarTrainer_intervals.html"><span style="color: rgb(187, 120, 250); ">Click here</span></a> to check out Little Ear Trainer: Basic Intervals! <a href="lilEarTrainer_intervalHarmony.html"><span style="color: rgb(187, 120, 250); ">Click here</span></a> to check out Little Ear Trainer: Interval Harmony page!
+     
+            <button class="accordion">Click to Show/Hide Instructions</button>
+            <div class="panel">
+              <br>
+              <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Click the "Listen" button. You will hear two notes.
+              <br>
+              <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Decide whether the music got higher (went up), got lower (went down), or stayed the same.
+              <br>
+              <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: Use the answer menu to select the option that matches your choice and press the "Submit" button.
+              <br>
+              <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Read your result and keep practicing!
+            </div>
+            <br><br>
+            <span style="color: rgb(187, 120, 250);">&#9834</span> Check out these other Little Ear Trainer pages:
+            <br>&nbsp;&nbsp; <a href="lilEarTrainer_intervals.html"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for Little Ear Trainer: Basic Intervals!
+            <br>&nbsp;&nbsp; <a href="lilEarTrainer_intervalHarmony.html"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for Little Ear Trainer: Interval Harmony!
+          </div>
+        </div>
+       
 
         <br><br>
+        Click for your exercise: &nbsp;
+        <button class = "buttonSmall" id = "listen">Listen</button> <br><br>
 
-        <button id = "listen">Listen</button>
-
+        Pitch Direction: &nbsp
         <select id="answerChoice">
           <option value="up">Music got higher (went up)</option>
           <option value="down">Music got lower (went down)</option>
           <option value="unison">Music stayed the same</option>
         </select>
 
-        
-        <button id = "submit">Submit</button>
+        &nbsp;
+
+        <button class = "buttonLarge" id = "submit">Submit</button>
         <br><br>
 
         <div id="result" style = "visibility:hidden"></div>
         <br>
-        <button id = "new" style = "visibility:hidden">Create new exercise!</button>
+        <button class = "buttonSmall" id = "new" style = "visibility:hidden">Create new exercise!</button>
+
+       
 
         
         <script src = 'https://cdnjs.cloudflare.com/ajax/libs/tone/14.6.0/Tone.js'></script>
-        <script text="text/javascript" src="directiontrainer.js"></script>
-        <script text="text/javascript" src="practiceSound2.js"></script>
+        <script text="text/javascript" src="direction_trainer.js"></script>
+        <script text="text/javascript" src="audio.js"></script>
+        <script text="text/javascript" src="evaluator.js"></script>
+        <script text="text/javascript" src="front_end_logic.js"></script>
+
+        <script>
+         showHideDirections();
+          </script>
      
 
 

@@ -18,9 +18,9 @@ window.onload = function(){
 
 function highlight(div){
     
-    var a = document.getElementById("A");
-    var b = document.getElementById("B");
-    var c = document.getElementById("C");
+    let a = document.getElementById("A");
+    let b = document.getElementById("B");
+    let c = document.getElementById("C");
 
     a.style.backgroundColor = "white";
     b.style.backgroundColor = "white";
@@ -42,23 +42,23 @@ function highlight(div){
 
 function generateQuestion(lvl){
     //alert(lvl);
-    var btn = document.getElementById("exercise");
+    let btn = document.getElementById("exercise");
     btn.disabled = true;
 
-    var question = document.getElementById("question");
+    let question = document.getElementById("question");
     question.style.visibility = "visible";
 
     if(lvl == null){
     
-    var level = document.getElementById("level");
+    let level = document.getElementById("level");
     level.disabled = "disabled";
-    var selectedLevel = level.options[level.selectedIndex].value;
+    let selectedLevel = level.options[level.selectedIndex].value;
 
     buildQuestion(selectedLevel);
     }
 
     else{
-        var level = document.getElementById("level");
+        let level = document.getElementById("level");
         level.value = lvl;
         level.disabled = "disabled";
    
@@ -70,11 +70,11 @@ function generateQuestion(lvl){
 
 function buildQuestion(selectedLevel){
 
-    var arrayPossible = ["A3", "B3",
+    const arrayPossible = ["A3", "B3",
     "C4", "D4",  "E4", "F4",  "G4",  "A4",  "B4",
     "C5", "D5", "E5", "F5"];
 
-    var noteMap = new Map();
+    const noteMap = new Map();
     noteMap.set("A3", "a/3");
     noteMap.set("B3", "b/3");
     noteMap.set("C4", "c/4");
@@ -89,20 +89,20 @@ function buildQuestion(selectedLevel){
     noteMap.set("E5", "e/5");
     noteMap.set("F5", "f/5");
     
-    var notesArray = [];
-    var incorrect1 = [];
-    var incorrect2 = [];
+    let notesArray = [];
+    let incorrect1 = [];
+    let incorrect2 = [];
 
-    var index1 = Math.floor(Math.random() * arrayPossible.length);
-    var note1 = arrayPossible[index1];
+    let index1 = Math.floor(Math.random() * arrayPossible.length);
+    let note1 = arrayPossible[index1];
     notesArray.push(note1);
     incorrect1.push(note1);
     incorrect2.push(note1);
 
-    var direction = [-1, 1];
+    const direction = [-1, 1];
 
 
-    var intervalArray = [0, 1];
+    let intervalArray = [0, 1];
     
 
     if(selectedLevel == 2){
@@ -117,34 +117,34 @@ function buildQuestion(selectedLevel){
         intervalArray = [0, 1, 2, 3, 4, 5, 6, 7]; 
     }
     
-    var current = index1;
-    var current1 = index1;
-    var current2 = index1;
+    let current = index1;
+    let current1 = index1;
+    let current2 = index1;
     //console.log(current);
     
     while(notesArray.length < 4){
-        var position = current;
-        var nextNote = intervalArray[Math.floor(Math.random() * intervalArray.length)];
-        var nextdirection = direction[Math.floor(Math.random() * direction.length)];
+        let position = current;
+        let nextNote = intervalArray[Math.floor(Math.random() * intervalArray.length)];
+        let nextdirection = direction[Math.floor(Math.random() * direction.length)];
 
         if(((nextNote * nextdirection)+ position > arrayPossible.length-1) || ((nextNote * nextdirection)+ position < 0)){
             nextdirection = nextdirection * -1;
         } 
-        var nextindex = (nextNote * nextdirection)+ position;
+        let nextindex = (nextNote * nextdirection)+ position;
         nextNote = arrayPossible[nextindex];
         notesArray.push(nextNote);
         current = nextindex;
     }
-    var j = 1
+    let j = 1
     while(j < 4){
-        var position1 = current1;
-        var nextNote1 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
-        var nextdirection1 = direction[Math.floor(Math.random() * direction.length)];
+        let position1 = current1;
+        let nextNote1 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
+        let nextdirection1 = direction[Math.floor(Math.random() * direction.length)];
 
         if(((nextNote1 * nextdirection1)+ position1 > arrayPossible.length-1) || ((nextNote1 * nextdirection1)+ position1 < 0)){
             nextdirection1 = nextdirection1 * -1;
         }
-        var nextindex1 = (nextNote1 * nextdirection1)+ position1;
+        let nextindex1 = (nextNote1 * nextdirection1)+ position1;
         nextNote1 = arrayPossible[nextindex1];
 
         if(nextNote1 == null){
@@ -171,14 +171,14 @@ function buildQuestion(selectedLevel){
     }
     j=1;
     while(j < 4){    
-        var position2 = current2;
-        var nextNote2 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
-        var nextdirection2 = direction[Math.floor(Math.random() * direction.length)];
+        let position2 = current2;
+        let nextNote2 = intervalArray[Math.floor(Math.random() * intervalArray.length)]; //incorrect1
+        let nextdirection2 = direction[Math.floor(Math.random() * direction.length)];
 
         if(((nextNote2 * nextdirection2)+ position2 > arrayPossible.length-1) || ((nextNote2 * nextdirection2)+ position2 < 0)){
             nextdirection2 = nextdirection2 * -1;
         } 
-        var nextindex2 = (nextNote2 * nextdirection2)+ position2;  
+        let nextindex2 = (nextNote2 * nextdirection2)+ position2;  
         nextNote2 = arrayPossible[nextindex2];
 
         if(nextNote2 == null){
@@ -214,14 +214,14 @@ function buildQuestion(selectedLevel){
     }
 
 
-    var mc = ["A", "B", "C"];
+    let mc = ["A", "B", "C"];
     shuffle(mc);
-    var ans = mc[0]
-    var incorrect1ans = mc[1]
-    var incorrect2ans = mc[2];
+    let ans = mc[0]
+    let incorrect1ans = mc[1]
+    let incorrect2ans = mc[2];
 
     populateDivs(notesArray, ans, incorrect1, incorrect1ans, incorrect2, incorrect2ans, noteMap);
-    practice2(notesArray, ans, selectedLevel);
+    pitchDictationAudio(notesArray, ans, selectedLevel);
 
 }
 
@@ -235,9 +235,9 @@ function shuffle(a) {
 
 function populateDivs(notesArray, ans, incorrect1, incorrect1ans, incorrect2, incorrect2ans, noteMap){
 
-var div1 = document.getElementById(ans);
-var div2 = document.getElementById(incorrect1ans);
-var div3 = document.getElementById(incorrect2ans);
+let div1 = document.getElementById(ans);
+let div2 = document.getElementById(incorrect1ans);
+let div3 = document.getElementById(incorrect2ans);
 
 
 drawStaff(div1, notesArray, noteMap);
@@ -259,12 +259,12 @@ function drawStaff(div1, array, noteMap){
 
 var notes = [];
 
-for(var i = 0; i < array.length; i++){
-    var n1 = noteMap.get(array[i]); 
+for(let i = 0; i < array.length; i++){
+    let n1 = noteMap.get(array[i]); 
     notes.push(new VF.StaveNote({clef: "treble", keys: [n1], duration: "q" }));
 }
 
-var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+let voice = new VF.Voice({num_beats: 4,  beat_value: 4});
 voice.setStrict(false);
 voice.addTickables(notes);
 
@@ -275,7 +275,3 @@ var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 300); //4
 voice.draw(context, stave);
 
 }
-
-
-
-

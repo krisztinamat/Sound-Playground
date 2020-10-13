@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html>
-        <link rel="stylesheet" type="text/css" href="style2.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
 
     <head>
       <link rel="icon" href="favicon1.ico">
         <title>Sound Playground: Elementary Edition</title>
         <style>
-           h1{
-               font-size: 36px;
-           }
-           h2{
-               font-size: 24px;
-           } 
-
-           
+       
         th, td {
         border: 1px solid black;
         }
@@ -24,26 +17,6 @@
 
     </head>
     <body>
-   <!--
-
-      <div id="loading"></div>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-      <script>
-       
-
-       function hideLoader() {
-         setTimeout(function(){
-        document.getElementById("loading").style.display="none";
-      }, 1000);  
-
-        //$('#loading').hide();
-        }
-
-        $(window).ready(hideLoader);
-
-        // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
-        setTimeout(hideLoader, 20 * 1000); 
-      </script> -->
 
       <div class="header">
             
@@ -56,9 +29,9 @@
               </button>
               <div class="dropdown-content">
                 <a href="lilEarTrainer_intervals.html">Little Ear Trainer</a>
-                <a href="rhythm_ID.html">Rhythm Randomizer</a>
+                <a href="rhythm_randomizer.html">Rhythm Randomizer</a>
                <a href="rhythm_grid.html">Rhythm Grids</a>
-               <a href="musicalmath.html">Music Math Mash-up</a>
+               <a href="music_math.html">Music Math Mash-up</a>
                <a href="rhythm_dictation.html">Rhythm Machine</a>
                <a href="pitch_dictation.html">Tone Machine</a>
                <a href="melodic_dictation.html">Melody Machine</a>
@@ -67,7 +40,7 @@
               </div>
             </div> 
             <!-- <a href="https://sound--playground.herokuapp.com/">Advanced Ear Trainer</a>-->
-            <a href="aboutpage.html">About</a>
+            <a href="about_page.html">About</a>
             <a href="feedback.html">Feedback</a>
           </div>
 
@@ -81,17 +54,25 @@
 
     </div>
 
-    Need a refresher? <a href="beatguide.html" target="_blank"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for a beat value review page! <a href="mathreview.html" target="_blank"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for a math review page!
-    <br><br>
-    <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Choose your level in the first menu to generate a randomized musical math problem! Use your knowledge of beat values to solve it! Hint: in these problems, the quarter note is worth one beat.
+    <button class="accordion">Click to Show/Hide Instructions</button>
+        <div class="panel">
+          <br>
+          <span style="color: rgb(187, 120, 250);">&#9834</span> Step 1: Choose your level in the first menu to generate a randomized musical math problem! Use your knowledge of beat values to solve it! Hint: in these problems, the quarter note is worth one beat.
         <br>
         <span style="color: rgb(187, 120, 250);">&#9834</span> Step 2: Select your answer in the menu OR type your answer and press "Submit."
         <br>
         <span style="color: rgb(187, 120, 250);">&#9834</span> Step 3: The correct answer will be revealed. If you made a mistake, double-check your math. 
         <br>
         <span style="color: rgb(187, 120, 250);">&#9834</span> Step 4: Keep practicing!
+        </div>
         <br><br>
-
+        <span style="color: rgb(187, 120, 250);">&#9834 </span>Need a refresher?
+        <br>&nbsp;&nbsp; <a href="beat_guide.html" target="_blank"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for a beat value review page!
+        <br>&nbsp;&nbsp; <a href="math_review.html" target="_blank"><span style="color: rgb(187, 120, 250); ">Click here</span></a> for a math review page!
+      </div>
+    </div>
+  
+    <br> <br>
         NOTE: for typed answers, if you are not entering a whole number, improper fractions (example: 1/4 or 10/3) are recommended! For non-repeating decimals, decimal format is also acceptable.
       
         
@@ -108,7 +89,7 @@
        <input type="checkbox" id="bonus" name="bonus" value= true> 
          <label for="bonus">Add a bonus operation</label>
         
-      <button id = "exercise" onclick="generateQuestion()">Generate!</button> 
+      <button class = "buttonLarge" id = "exercise" onclick="generateQuestion()">Generate!</button> 
       
       <br> <br>
 
@@ -139,7 +120,7 @@
   
         </div>
   
-        <button id = "submit">Submit</button>
+        <button class = "buttonLarge" id = "submit">Submit</button>
       
       </div>
 
@@ -156,15 +137,17 @@
     
           </div>
           
-          <button id = "samemode" style = "visibility:hidden">New exercise: same level</button> &nbsp; &nbsp;
-          <button id = "new" style = "visibility:hidden">New exercise: new level</button>
+          <button class = "buttonSmall" id = "samemode" style = "visibility:hidden">New exercise: same level</button> &nbsp; &nbsp;
+          <button class = "buttonSmall" id = "new" style = "visibility:hidden">New exercise: new level</button>
 
         <script src = 'https://unpkg.com/vexflow/releases/vexflow-min.js'></script>
-        <script text="text/javascript" src="mathgenerator.js"></script>
+        <script text="text/javascript" src="math_generator.js"></script>
+        <script text="text/javascript" src="evaluator.js"></script>
+        <script text="text/javascript" src="front_end_logic.js"></script>
 
-        
-     
-
+        <script>
+          showHideDirections();
+        </script>
 
 
     </body>
