@@ -383,30 +383,3 @@ function rhythmDictation(ans, selectedLevel){
         window.location.reload()});        
     
 }
-/*
-function getSound1(notesArray, btn, btn2){
-    btn.disabled=true;
-    btn2.disabled = true;
-    
-    Tone.Transport.bpm.value = 200;
-    
-    const toneArray = [];
-    
-    for(i = 0; i<notesArray.length; i++){
-        let tone = notesArray[i];
-        toneArray.push(tone);
-    }
-    
-    let synth = new Tone.Synth();
-    
-    synth.toMaster();
-    
-    synth.triggerAttackRelease(toneArray[0], "1m");
-    synth.triggerAttackRelease(toneArray[1], "1m", "+1m");  
-    
-    setTimeout(function(){
-        btn.removeAttribute('disabled');
-        btn2.removeAttribute('disabled');
-    }, 2000)
-    
-    } */
