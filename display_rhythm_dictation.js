@@ -54,7 +54,7 @@ function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, inco
                 //console.log(data);
                 let duration = data[0];
                 if(data[3] == true){
-                    notes1.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
+                    notes1.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0));
                 }
                 else{
                     notes1.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration })); 
@@ -71,7 +71,7 @@ function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, inco
         else{
             var duration = currentItem[0];
             if(currentItem[3] == true){
-                notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
+                notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0));
             }
             else{
                 notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration })); 

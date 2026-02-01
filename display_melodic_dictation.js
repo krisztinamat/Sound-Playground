@@ -99,7 +99,7 @@ function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, inco
                 pitch = noteMap.get(array[1][pitch[j]]);
                 //console.log(pitch);
                 if(data[3] == true){
-                    notes1.push(new VF.StaveNote({clef: "treble", keys: [pitch], duration: duration }).addDot(0));
+                    notes1.push(new VF.StaveNote({clef: "treble", keys: [pitch], duration: duration }).addModifier(new VF.Dot(), 0));
                 }
                 else{
                     notes1.push(new VF.StaveNote({clef: "treble", keys: [pitch], duration: duration })); 
@@ -114,7 +114,7 @@ function populateDivs(ansArray, ans, incorrect1, incorrect1ans, incorrect2, inco
         else{
             let duration = currentItem[0];
             if(currentItem[3] == true){
-                notes.push(new VF.StaveNote({clef: "treble", keys: [truepitch], duration: duration }).addDot(0));
+                notes.push(new VF.StaveNote({clef: "treble", keys: [truepitch], duration: duration }).addModifier(new VF.Dot(), 0));
             }
             else{
                 notes.push(new VF.StaveNote({clef: "treble", keys: [truepitch], duration: duration })); 

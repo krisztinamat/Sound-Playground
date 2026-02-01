@@ -70,7 +70,7 @@ while(currentMeasure[1] > 0 && currentMeasure[0] < 5){
         let duration = currentArr[0];
 
         if(randomElement === "dotted half note"){
-            var n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0);     
+            var n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0);
         }
        
         else{ 

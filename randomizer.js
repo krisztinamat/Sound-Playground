@@ -167,17 +167,17 @@ if(randomElement === "whole rest"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["d/5"], duration: duration }));
 }
 else if(randomElement == "dotted whole rest"){
-    notes.push(new VF.StaveNote({clef: "treble", keys: ["d/5"], duration: duration }).addDot(0)); 
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["d/5"], duration: duration }).addModifier(new VF.Dot(), 0)); 
 }
 else if(randomElement === "half rest" || randomElement === "quarter rest" || randomElement === "eighth rest" || randomElement === "sixteenth rest"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: duration }));
 }
 else if(randomElement === "dotted half rest" || randomElement === "dotted quarter rest"){
-    notes.push(new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: duration }).addDot(0));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["b/4"], duration: duration }).addModifier(new VF.Dot(), 0));
 }
 
 else if(randomElement === "dotted whole note" || randomElement === "dotted half note" || randomElement === "dotted quarter note" || randomElement === "dotted eighth note"){
-    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
+    notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0));
 }
 else if(randomElement === "eighth note pair" || randomElement === "sixteenth note pair"){
     notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));

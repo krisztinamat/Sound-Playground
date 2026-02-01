@@ -70,7 +70,7 @@ while(currentMeasure[1] > 0 ){
         let duration = currentArr[0];
 
         if(randomElement === "dotted half note"){
-            let n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0);
+            let n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0);
             n.setStyle({fillStyle: color, strokeStyle: color});
             notes.push(n);
         }
@@ -79,7 +79,7 @@ while(currentMeasure[1] > 0 ){
           
           if((currentMeasure[1] - Math.floor(currentMeasure[1])) !== 0){
             
-            let n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0);
+            let n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0);
             let m  = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" });
 
             n.setStyle({fillStyle: color, strokeStyle: color});
@@ -92,7 +92,7 @@ while(currentMeasure[1] > 0 ){
             answerBank.set(meas, arr);
           }
           else{
-            let n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0);
+            let n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0);
             n.setStyle({fillStyle: color, strokeStyle: color});
             notes.push(n);
           }
@@ -135,7 +135,7 @@ while(currentMeasure[1] > 0 ){
             var random2 = randomOutcome[Math.floor(Math.random() * randomOutcome.length)];
             if(random2 == 1){
               let n = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration });
-              let m = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }).addDot(0);
+              let m = new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }).addModifier(new VF.Dot(), 0);
 
               n.setStyle({fillStyle: color, strokeStyle: color});
               notes.push(n);

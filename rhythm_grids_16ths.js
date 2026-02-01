@@ -63,7 +63,7 @@ while(currentMeasure[1] > 0 ){
 
         if(randomElement === "dotted eighth note"){
           notes2 = [];
-            notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
+            notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0));
             notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "16" }) );
             beams.push(new VF.Beam(notes2));
             notes = notes.concat(notes2);
@@ -95,7 +95,7 @@ while(currentMeasure[1] > 0 ){
             let num = options[Math.floor(Math.random() * options.length)];
             if(num == 1){
             notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
-            notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" }).addDot(0) );
+            notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" }).addModifier(new VF.Dot(), 0) );
             arr[beatBox-1]="dotted eighth note";
               answerBank.set(meas, arr);
             }
@@ -125,7 +125,7 @@ while(currentMeasure[1] > 0 ){
           if(num == 1){
             notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
             notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
-            notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }).addDot(0));
+            notes2.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }).addModifier(new VF.Dot(), 0));
             beams.push(new VF.Beam(notes2));
             notes = notes.concat(notes2);
             currentMeasure[1] = currentMeasure[1] - 1.5;
@@ -180,14 +180,14 @@ while(currentMeasure[1] > 0 ){
           
           if((currentMeasure[1] - Math.floor(currentMeasure[1])) !== 0){
             
-            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
+            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0));
             notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "8" }) );
             currentMeasure[1] = currentMeasure[1] - 0.5;
             arr[beatBox-6]="single eighth note";
             answerBank.set(meas, arr);
           }
           else{
-            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addDot(0));
+            notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }).addModifier(new VF.Dot(), 0));
           }
         }
 
@@ -233,7 +233,7 @@ while(currentMeasure[1] > 0 ){
             let random2 = randomOutcome[Math.floor(Math.random() * randomOutcome.length)];
             if(random2 == 1){
               notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: duration }));
-              notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }).addDot(0));
+              notes.push(new VF.StaveNote({clef: "treble", keys: ["e/4"], duration: "q" }).addModifier(new VF.Dot(), 0));
               currentMeasure[1] = currentMeasure[1] - 1.5;
               arr[beatBox-2]="dotted quarter note";
               answerBank.set(meas, arr);
@@ -291,7 +291,6 @@ answerBank.get(1).reverse();
 
 let ans = [];
 let meas1 = answerBank.get(1);
-console.log(meas1);
 
 for(let i = 0; i < meas1.length; i++){
  
@@ -302,8 +301,6 @@ for(let i = 0; i < meas1.length; i++){
     ans.push(meas1[i]);
   }
 }
-
-console.log(ans);
 
 let submit = document.getElementById("submit");
 submit.addEventListener("click", function(){evaluate(ans, submit, 3)} );
